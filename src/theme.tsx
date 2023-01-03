@@ -1,18 +1,18 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react';
 
-const colors = {
-  primary: {
-    900: '#0A2647',
-    800: '#00305e',
-    700: '#174978',
-    600: '#2A475D',
-    500: '#2A475D',
-    400: '',
-    300: '',
-    200: '',
-    100: '',
-    50: '',
+const base = {
+  fonts: {
+    body: `'Electrolize', 'sans-serif', 'Inter', 'Avenir'`,
   },
-}
+  colors: {
+    background: {
+      dark: '#121212',
+    },
+    font: {
+      bright: '#00D9C0',
+      default: '#CDCDCD',
+    },
+  },
+};
 
-const theme = extendTheme({ colors })
+export const theme = extendTheme(base);
