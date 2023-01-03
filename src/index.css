@@ -1,11 +1,17 @@
+@font-face {
+  font-family: 'Electrolize';
+  font-display: block;
+  src: local('Electrolize'),
+    url('./fonts/Electrolize-Regular.woff2') format('woff2'),
+    url('./fonts/Electrolize-Regular.woff') format('woff');
+}
+
 :root {
-  font-family: 'Electrolize', sans-serif, Inter, Avenir;
+  font-family: Electrolize, sans-serif, Inter, Avenir;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
   background-color: #121212;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,6 +19,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-html, body, :root {
+html,
+body,
+:root {
   width: 100%;
 }
