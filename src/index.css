@@ -2,8 +2,8 @@
   font-family: 'Electrolize';
   font-display: block;
   src: local('Electrolize'),
-    url('./fonts/Electrolize-Regular.woff2') format('woff2'),
-    url('./fonts/Electrolize-Regular.woff') format('woff');
+    url('/fonts/Electrolize-Regular.woff2') format('woff2'),
+    url('/fonts/Electrolize-Regular.woff') format('woff');
 }
 
 :root {
