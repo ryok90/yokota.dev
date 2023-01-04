@@ -41,22 +41,22 @@ export const SkillsSection = () => (
         <SkillCard
           title="Back-end"
           description="Experience with serverless, micro-services, monolithics, SQL and NoSQL, event driven, clean architecture, etc."
-          background="linear-gradient(179.93deg, rgba(249, 249, 249, 0.04) 0.06%, rgba(249, 249, 249, 0) 136.14%)"
+          background="linear-gradient(180deg, rgba(249, 249, 249, 0.04) 0.06%, rgba(249, 249, 249, 0) 136.14%)"
         />
         <SkillCard
           title="Front-end"
           description="Going from raw CSS to pre-built styling libs, from SPA to SSR, my toolkit is wide."
-          background="linear-gradient(179.93deg, rgba(249, 249, 249, 0.04) 0.06%, rgba(249, 249, 249, 0) 136.14%)"
+          background="linear-gradient(180deg, rgba(249, 249, 249, 0.04) 0.06%, rgba(249, 249, 249, 0) 136.14%)"
         />
         <SkillCard
           title="Mobile App"
           description="Working with Flutter and React Native gave me a deep perspective into what mobile app development is."
-          background="linear-gradient(181.01deg, rgba(249, 249, 249, 0.0116) 0.87%, rgba(249, 249, 249, 0) 78.91%)"
+          background="linear-gradient(180deg, rgba(249, 249, 249, 0.0116) 0.87%, rgba(249, 249, 249, 0) 78.91%)"
         />
         <SkillCard
           title="SRE"
           description="Increasing knowledge on cloud providers and infrastructure to provide better solutions."
-          background="linear-gradient(181.01deg, rgba(249, 249, 249, 0.0116) 0.87%, rgba(249, 249, 249, 0) 78.91%)"
+          background="linear-gradient(180deg, rgba(249, 249, 249, 0.0116) 0.87%, rgba(249, 249, 249, 0) 78.91%)"
         />
       </SimpleGrid>
     </HStack>
