@@ -3,14 +3,13 @@ import { Section } from './Section';
 
 export const Header = () => (
   <Section>
-    <HStack w="100%" justifyContent="space-between">
-      <Text fontSize="2xl" color="font.bright">
+    <HStack w="100%" justifyContent="center">
+      <Text fontSize="2xl" color="custom.main">
         yokota
-        <Text as="span" color="font.default">
+        <Text as="span" color="custom.light">
           .dev
         </Text>
       </Text>
-      <Box></Box>
     </HStack>
   </Section>
 );

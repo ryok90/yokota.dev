@@ -5,14 +5,19 @@ const base = {
     body: `'Electrolize', 'sans-serif', 'Inter', 'Avenir'`,
   },
   colors: {
-    background: {
+    custom: {
       dark: '#121212',
-    },
-    font: {
-      bright: '#00D9C0',
-      default: '#CDCDCD',
+      main: '#00D9C0',
+      light: '#CDCDCD',
     },
   },
+  styles: {
+    global: {
+      body: {
+        color: 'font.default'
+      }
+    }
+  }
 };
 
 export const theme = extendTheme(base);
