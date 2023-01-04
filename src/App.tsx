@@ -2,6 +2,7 @@ import { Box, HStack, Text, VStack } from '@chakra-ui/react';
 import { Header } from './components/Header';
 import { MainSection } from './components/MainSection';
 import { Section } from './components/Section';
+import { SkillsSection } from './components/SkillsSection';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Box as="main">
         <MainSection />
+        <SkillsSection />
       </Box>
     </VStack>
   );
