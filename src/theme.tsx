@@ -8,7 +8,7 @@ const base = {
   colors: {
     custom: {
       dark: '#121212',
-      lightDark: '#1B1B1B',
+      lighterDark: '#1B1B1B',
       main: '#00D9C0',
       light: '#CDCDCD',
     },

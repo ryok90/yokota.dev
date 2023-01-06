@@ -28,7 +28,7 @@ const SkillCard = ({ title, description, background }: SkillCardProps) => (
 );
 
 export const SkillsSection = () => (
-  <Section mt="40">
+  <Section>
     <HStack spacing="28">
       <VStack spacing="0">
         <WhatIDo opacity={1} />
@@ -50,7 +50,7 @@ export const SkillsSection = () => (
           background="linear-gradient(180deg, rgba(249, 249, 249, 0.04) 0.06%, rgba(249, 249, 249, 0) 136.14%)"
         />
         <SkillCard
-          title="Mobile App"
+          title="Mobile Apps"
           description="Working with Flutter and React Native gave me a deep perspective on mobile app development."
           background="linear-gradient(180deg, rgba(249, 249, 249, 0.0116) 0.87%, rgba(249, 249, 249, 0) 78.91%)"
         />

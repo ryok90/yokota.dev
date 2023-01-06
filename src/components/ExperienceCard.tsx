@@ -1,0 +1,78 @@
+import {
+  Box,
+  Divider,
+  HStack,
+  Image,
+  Link,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+
+type ExperienceCardProps = {
+  logoAlt: string;
+  logoSrc: string;
+  jobTitle: string;
+  period: string;
+  description: string;
+  techs: string[];
+  href: string;
+};
+
+export const ExperienceCard = ({
+  logoAlt,
+  logoSrc,
+  jobTitle,
+  period,
+  description,
+  techs,
+  href,
+}: ExperienceCardProps) => (
+  <VStack
+    justifyContent="space-between"
+    bgColor="custom.lighterDark"
+    borderRadius="2xl"
+    maxW="5xl"
+    w="100%"
+    px="20"
+    pb="5"
+    h="56"
+  >
+    <HStack w="100%" justifyContent="space-between" mt="10">
+      <VStack alignItems="start" spacing={0}>
+        <Link href={href} target="_blank">
+          <Image src={logoSrc} pb="2" alt={logoAlt} />
+        </Link>
+        <Text as="h3" fontSize="2xl" color="custom.main">
+          {jobTitle}
+        </Text>
+        <Text fontFamily="secondary" fontSize="sm" mt="0">
+          {period}
+        </Text>
+      </VStack>
+      <HStack h="100%">
+        <Divider orientation="vertical" h="80%" mr="16" />
+        <Text fontFamily="secondary" maxW="md">
+          {description}
+        </Text>
+      </HStack>
+    </HStack>
+    <HStack
+      as="ul"
+      divider={<>&bull;</>}
+      listStyleType="none"
+      justifyContent="space-between"
+      w="100%"
+    >
+      {techs.map((tech, index) => (
+        <Box
+          as="li"
+          key={`${index + tech}`}
+          fontSize="xs"
+          fontFamily="secondary"
+        >
+          {tech}
+        </Box>
+      ))}
+    </HStack>
+  </VStack>
+);

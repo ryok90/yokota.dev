@@ -1,10 +1,10 @@
-import { Box, HStack, Text } from '@chakra-ui/react';
+import { HStack, Text } from '@chakra-ui/react';
 import { Section } from './Section';
 
 export const Header = () => (
-  <Section>
+  <Section as="header" pb="0">
     <HStack w="100%" justifyContent="center">
-      <Text fontSize="2xl" color="custom.main">
+      <Text as="h1" fontSize="2xl" color="custom.main">
         yokota
         <Text as="span" color="custom.light">
           .dev
