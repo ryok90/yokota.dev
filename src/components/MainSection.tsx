@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, VStack } from '@chakra-ui/react';
 import { Section } from './Section';
 import { Typewriter } from './Typewriter';
 
@@ -14,15 +14,17 @@ export const MainSection = () => (
         background="url('/images/rodrigo-yokota.webp') bottom/contain no-repeat"
         backgroundColor="custom.main"
       />
-      <VStack maxW="lg" alignItems="start">
-        <Text as="h1" fontSize="5xl">
-          Hello, I'm{' '}
-          <Text as="span" color="custom.main">
-            Rodrigo
+      <VStack maxW="34rem" alignItems="start">
+        <header>
+          <Text color="white" as="h1" fontSize="5xl">
+            Hello, I'm{' '}
+            <Text as="span" color="custom.main">
+              Rodrigo
+            </Text>
+            !
           </Text>
-          !
-        </Text>
-        <Text as="h2" fontSize="2xl">
+        </header>
+        <Text fontFamily={'Inter, Electrolize'} fontSize="2xl">
           I am a full-stack software engineer, developing awesome web and mobile
           applications since 2018. Forever learning and improving skills.
         </Text>

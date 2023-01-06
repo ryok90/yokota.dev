@@ -2,11 +2,13 @@ import { extendTheme } from '@chakra-ui/react';
 
 const base = {
   fonts: {
-    body: `'Electrolize', 'sans-serif', 'Inter', 'Avenir'`,
+    body: `'Electrolize', 'Inter', 'sans-serif', 'Avenir'`,
+    secondary: 'Inter',
   },
   colors: {
     custom: {
       dark: '#121212',
+      lightDark: '#1B1B1B',
       main: '#00D9C0',
       light: '#CDCDCD',
     },
@@ -14,10 +16,10 @@ const base = {
   styles: {
     global: {
       body: {
-        color: 'font.default'
-      }
-    }
-  }
+        color: 'custom.light',
+      },
+    },
+  },
 };
 
 export const theme = extendTheme(base);
