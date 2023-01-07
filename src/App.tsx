@@ -8,7 +8,11 @@ import { SkillsSection } from './components/SkillsSection';
 
 function App() {
   return (
-    <VStack bgColor={'custom.dark'} w="100%" spacing="40">
+    <VStack
+      bgColor={'custom.background'}
+      w="100%"
+      spacing={{ base: 20, lg: 40 }}
+    >
       <Header />
       <HStack w="100%" alignItems="start" justifyContent="center">
         <VStack
@@ -22,7 +26,7 @@ function App() {
         >
           <Links />
         </VStack>
-        <VStack w="100%" maxW="5xl" spacing="12.5rem">
+        <VStack w="100%" maxW="5xl" spacing={{ base: 14, lg: '12.5rem' }}>
           <MainSection />
           <SkillsSection />
           <ExperienceSection />

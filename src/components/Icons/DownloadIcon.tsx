@@ -12,16 +12,16 @@ export const DownloadIcon = (iconProps: IconProps) => (
     <path
       d="M1 17L13 17"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7 1V13M7 13L10.5 9.5M7 13L3.5 9.5"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </Icon>
 );

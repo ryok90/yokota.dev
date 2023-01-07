@@ -2,10 +2,10 @@ import { Flex, HStack, Stack, Text, VStack } from '@chakra-ui/react';
 import { Section } from './Section';
 import { Typewriter } from './Typewriter';
 
-const diameter = { base: 32, sm: 40, md: 44, lg: 52 }
+const diameter = { base: 32, sm: 40, md: 44, lg: 52 };
 
 export const MainSection = () => (
-  <Section as="main" px='12'>
+  <Section as="main" px="12">
     <Stack
       w="100%"
       direction={{ base: 'column', lg: 'row' }}
@@ -32,7 +32,7 @@ export const MainSection = () => (
         </Text>
         <Text
           fontFamily={'Inter, Electrolize'}
-          fontSize={{ base:'md', md: '2xl' }}
+          fontSize={{ base: 'md', md: '2xl' }}
           textAlign={{ base: 'center', lg: 'start' }}
         >
           I am a full-stack software engineer, developing awesome web and mobile

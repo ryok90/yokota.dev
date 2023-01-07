@@ -7,10 +7,12 @@ const base = {
   },
   colors: {
     custom: {
-      dark: '#121212',
-      lighterDark: '#1B1B1B',
-      main: '#00D9C0',
+      background: '#121212',
+      dark: '#1B1B1B',
+      lightDark: '#424242',
+      lighterDark: '#8B8B8B',
       light: '#CDCDCD',
+      main: '#00D9C0',
     },
   },
   styles: {
@@ -20,14 +22,11 @@ const base = {
       body: {
         width: '100%',
         color: 'custom.light',
-        backgroundColor: 'custom.dark',
+        backgroundColor: 'custom.background',
         fontSize: '16px',
         fontWeight: 400,
         fontSynthesis: 'none',
         textRendering: 'optimizeLegibility',
-        '-webkit-font-smoothing': 'antialiased',
-        '-moz-osx-font-smoothing': 'grayscale',
-        '-webkit-text-size-adjust': '100%',
       },
     },
   },

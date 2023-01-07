@@ -15,7 +15,7 @@ export const ExperienceSection = () => (
         href="https://www.linkedin.com/company/groundbreakerco/"
         jobTitle="Software Engineer"
         period="Dec/2021 - Present"
-        description="Developing new features as well as migrating legacy structures taking full advantage of our cloud provider's solutions. Assisting in decision making process and helping organize implementaions."
+        description="Developing new features as well as migrating legacy structures taking full advantage of our cloud provider's solutions. Assisting in decision making process and helping organize implementations."
         techs={'Node.js,Serverless,Nx,Micro-services,Micro-frontends,Module Federation,ReactJS,Typescript,Javascript,DynamoDB'.split(
           ','
         )}
@@ -53,7 +53,7 @@ export const ExperienceSection = () => (
       alignSelf="end"
       _hover={{ color: 'custom.main' }}
       fontSize="xl"
-      bgColor="custom.lighterDark"
+      bgColor="custom.dark"
     >
       <DownloadIcon mr="3" />
       Download Resume

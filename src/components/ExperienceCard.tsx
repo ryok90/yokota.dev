@@ -29,7 +29,7 @@ export const ExperienceCard = ({
 }: ExperienceCardProps) => (
   <VStack
     justifyContent="space-between"
-    bgColor="custom.lighterDark"
+    bgColor="custom.dark"
     borderRadius="2xl"
     maxW="5xl"
     w="100%"
