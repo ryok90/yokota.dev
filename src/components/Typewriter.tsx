@@ -23,7 +23,7 @@ export const Typewriter = () => {
       color="custom.main"
       height="1.5rem"
       lineHeight="1.5rem"
-      fontSize="xl"
+      fontSize={{ base: 'md', md: 'xl' }}
       animation={animation}
       borderRight="0.1em solid"
       whiteSpace="pre-wrap"
