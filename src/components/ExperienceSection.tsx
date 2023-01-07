@@ -18,7 +18,7 @@ export const ExperienceSection = () => (
       />
       <ExperienceCard
         logoAlt="Gazin Tech"
-        logoSrc="/images/gazin.svg"
+        logoSrc="/images/gazin.webp"
         href="https://www.gazintech.com.br/"
         jobTitle="Full-stack Developer"
         period="Sep/2020 - Nov/2021"

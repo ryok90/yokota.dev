@@ -40,7 +40,7 @@ export const ExperienceCard = ({
     <HStack w="100%" justifyContent="space-between" mt="10">
       <VStack alignItems="start" spacing={0}>
         <Link href={href} target="_blank">
-          <Image src={logoSrc} pb="2" alt={logoAlt} />
+          <Image src={logoSrc} pb="2" alt={logoAlt} _hover={{ opacity: 0.7 }} />
         </Link>
         <Text as="h3" fontSize="2xl" color="custom.main">
           {jobTitle}
