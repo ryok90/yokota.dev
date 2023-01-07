@@ -10,14 +10,14 @@ function App() {
   return (
     <VStack bgColor={'custom.dark'} w="100%" spacing="28">
       <Header />
-      <HStack w="100%" alignItems='start' justifyContent='center'>
+      <HStack w="100%" alignItems="start" justifyContent="center">
         <Links />
         <VStack spacing="28">
           <MainSection />
           <SkillsSection />
           <ExperienceSection />
         </VStack>
-        <Box w='6' />
+        <Box w="6" />
       </HStack>
       <Footer />
     </VStack>
