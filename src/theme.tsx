@@ -15,8 +15,19 @@ const base = {
   },
   styles: {
     global: {
+      html: { width: '100%' },
+      ':root': { width: '100%' },
       body: {
+        width: '100%',
         color: 'custom.light',
+        backgroundColor: 'custom.dark',
+        fontSize: '16px',
+        fontWeight: 400,
+        fontSynthesis: 'none',
+        textRendering: 'optimizeLegibility',
+        '-webkit-font-smoothing': 'antialiased',
+        '-moz-osx-font-smoothing': 'grayscale',
+        '-webkit-text-size-adjust': '100%',
       },
     },
   },

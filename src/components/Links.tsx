@@ -14,7 +14,7 @@ export const Links = () => {
   }
 
   return (
-    <VStack spacing="6" position="sticky" top="8" w="6" mt="3rem" mr="12">
+    <>
       <Link
         href={focus ? `mailto:${email}` : '#'}
         _hover={{ opacity: 0.6 }}
@@ -39,6 +39,6 @@ export const Links = () => {
       >
         <GitHubIcon />
       </Link>
-    </VStack>
+    </>
   );
 };

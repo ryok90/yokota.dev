@@ -12,23 +12,3 @@
   src: local('Inter'), url('/fonts/Inter-Regular.woff2') format('woff2'),
     url('/fonts/Inter-Regular.woff') format('woff');
 }
-
-:root {
-  font-family: Electrolize, Inter, sans-serif, Avenir;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  color: #cdcdcd;
-  background-color: #121212;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-html,
-body,
-:root {
-  width: 100%;
-}
