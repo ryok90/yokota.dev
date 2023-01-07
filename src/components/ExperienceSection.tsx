@@ -1,5 +1,6 @@
-import { Text, VStack } from '@chakra-ui/react';
+import { Box, Text, VStack } from '@chakra-ui/react';
 import { ExperienceCard } from './ExperienceCard';
+import { DownloadIcon } from './Icons/DownloadIcon';
 import { Section } from './Section';
 
 export const ExperienceSection = () => (
@@ -11,7 +12,7 @@ export const ExperienceSection = () => (
       <ExperienceCard
         logoAlt="Groundbreaker"
         logoSrc="/images/groundbreaker.webp"
-        href="https://www.groundbreaker.co/"
+        href="https://www.linkedin.com/company/groundbreakerco/"
         jobTitle="Software Engineer"
         period="Dec/2021 - Present"
         description="Developing new features as well as migrating legacy structures taking full advantage of our cloud provider's solutions. Assisting in decision making process and helping organize implementaions."
@@ -22,7 +23,7 @@ export const ExperienceSection = () => (
       <ExperienceCard
         logoAlt="Gazin Tech"
         logoSrc="/images/gazin.webp"
-        href="https://www.gazintech.com.br/"
+        href="https://www.linkedin.com/company/gazin-tech/"
         jobTitle="Full-stack Developer"
         period="Sep/2020 - Nov/2021"
         description="Participated in the development of the new e-commerce mobile app and improved the e-commerce web app. Took point in the development of an integrating micro-service to calculate shipping costs and notify updates."
@@ -33,7 +34,7 @@ export const ExperienceSection = () => (
       <ExperienceCard
         logoAlt="Vivaweb"
         logoSrc="/images/vivaweb.webp"
-        href="https://www.vivaweb.net/"
+        href="https://www.linkedin.com/company/vivaweb/"
         jobTitle="Full-stack Developer"
         period="May/2019 - Sep/2020"
         description="Developed new features and maintained the existing ones for the main product (corporative intranet) as well as started the new version of the mobile app using a multi-platform framework."
@@ -42,5 +43,20 @@ export const ExperienceSection = () => (
         )}
       />
     </VStack>
+    <Box
+      as="a"
+      href="https://drive.google.com/uc?export=download&id=1Q_JRCt0mZmhP7ieBWEMdeMBt8gAwfTA8"
+      borderRadius="lg"
+      px="6"
+      py="3"
+      mt="8"
+      alignSelf="end"
+      _hover={{ color: 'custom.main' }}
+      fontSize="xl"
+      bgColor="custom.lighterDark"
+    >
+      <DownloadIcon mr="3" />
+      Download Resume
+    </Box>
   </Section>
 );

@@ -26,6 +26,7 @@ export const Links = () => {
       <Link
         href="https://www.linkedin.com/in/rodrigo-yokota/"
         target="_blank"
+        rel="noopener"
         _hover={{ opacity: 0.6 }}
       >
         <LinkedInIcon />
@@ -33,6 +34,7 @@ export const Links = () => {
       <Link
         href="https://github.com/ryok90"
         target="_blank"
+        rel="noopener"
         _hover={{ opacity: 0.6 }}
       >
         <GitHubIcon />

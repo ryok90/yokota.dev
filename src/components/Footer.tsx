@@ -18,6 +18,7 @@ export const Footer = () => (
           <Link
             _hover={{ color: 'custom.main' }}
             target="_blank"
+            rel="noopener"
             href="https://www.linkedin.com/in/guyllian-kanashima-sasano-95b8b715a/"
           >
             Guyllian Kanashima
@@ -29,6 +30,7 @@ export const Footer = () => (
           <Link
             _hover={{ color: 'custom.main' }}
             target="_blank"
+            rel="noopener"
             href="https://github.com/ryok90/yokota.dev"
           >
             Rodrigo Yokota
