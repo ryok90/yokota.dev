@@ -3,7 +3,7 @@ import { Section } from './Section';
 import { Typewriter } from './Typewriter';
 
 export const MainSection = () => (
-  <Section as="main" mt="12">
+  <Section as="main">
     <HStack w="100%" flexDirection="row" justifyContent="center" spacing="28">
       <Flex
         minW="52"

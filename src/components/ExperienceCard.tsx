@@ -34,8 +34,8 @@ export const ExperienceCard = ({
     maxW="5xl"
     w="100%"
     px="20"
-    pb="5"
-    h="56"
+    pb="8"
+    h="60"
   >
     <HStack w="100%" justifyContent="space-between" mt="10">
       <VStack alignItems="start" spacing={0}>
@@ -50,7 +50,12 @@ export const ExperienceCard = ({
         </Text>
       </VStack>
       <HStack h="100%">
-        <Divider orientation="vertical" h="80%" mr="16" />
+        <Divider
+          orientation="vertical"
+          h="80%"
+          mr="16"
+          borderColor="custom.light"
+        />
         <Text fontFamily="secondary" maxW="md">
           {description}
         </Text>
@@ -61,15 +66,13 @@ export const ExperienceCard = ({
       divider={<>&bull;</>}
       listStyleType="none"
       justifyContent="space-between"
+      fontSize="xs"
+      fontFamily="secondary"
+      color="white"
       w="100%"
     >
       {techs.map((tech, index) => (
-        <Box
-          as="li"
-          key={`${index + tech}`}
-          fontSize="xs"
-          fontFamily="secondary"
-        >
+        <Box as="li" key={`${index + tech}`}>
           {tech}
         </Box>
       ))}

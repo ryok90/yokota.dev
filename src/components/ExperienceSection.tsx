@@ -1,10 +1,13 @@
-import { VStack } from '@chakra-ui/react';
+import { Text, VStack } from '@chakra-ui/react';
 import { ExperienceCard } from './ExperienceCard';
 import { Section } from './Section';
 
 export const ExperienceSection = () => (
-  <Section>
-    <VStack spacing="6" w="100%">
+  <Section display="flex" flexDirection="column" alignItems="start">
+    <Text as="h2" fontSize="5xl" color="custom.main" mb="10">
+      Work experience
+    </Text>
+    <VStack spacing="7" w="100%">
       <ExperienceCard
         logoAlt="Groundbreaker"
         logoSrc="/images/groundbreaker.webp"

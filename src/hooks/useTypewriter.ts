@@ -12,7 +12,7 @@ export const useTypewriter = (words: string[]) => {
         setContent(text.substring(0, i - 1));
         return setTimeout(() => erase(text, i - 1, fn), 30);
       }
-      fn();
+      setTimeout(() => fn(), 100);
     };
 
     const write: Typing = (text, i, fn) => {
