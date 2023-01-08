@@ -63,8 +63,8 @@ export const ExperienceCard = ({
     <HStack
       as="ul"
       display={{ base: 'flex', md: 'none', lg: 'flex' }}
-      flexWrap="wrap"
-      divider={isMobile ? undefined : <>&nbsp;&nbsp;&bull;&nbsp;&nbsp;</>}
+      flexWrap={{ base: 'wrap', md: 'nowrap' }}
+      divider={isMobile ? undefined : <>&nbsp;&bull;&nbsp;</>}
       listStyleType="none"
       justifyContent="space-between"
       fontSize="xs"
