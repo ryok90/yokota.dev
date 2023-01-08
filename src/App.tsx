@@ -14,7 +14,7 @@ function App() {
       spacing={{ base: 20, lg: 40 }}
     >
       <Header />
-      <HStack w="100%" alignItems="start" justifyContent="center">
+      <HStack w="100%" alignItems="start" justifyContent="center" spacing="0">
         <VStack
           spacing="6"
           position="sticky"

@@ -4,12 +4,23 @@ import { DownloadIcon } from './Icons/DownloadIcon';
 import { Section } from './Section';
 
 export const ExperienceSection = () => (
-  <Section display="flex" flexDirection="column" alignItems="start">
-    <Text as="h2" fontSize="5xl" color="custom.main" mb="10">
+  <Section
+    display="flex"
+    flexDirection="column"
+    alignItems={{ base: 'center', lg: 'start' }}
+    px={{ base: 9, xl: 0 }}
+  >
+    <Text
+      as="h2"
+      fontSize={{ base: '1.75rem', lg: '5xl' }}
+      color="custom.main"
+      mb={{ base: 8, xl: 10 }}
+    >
       Work experience
     </Text>
-    <VStack spacing="7" w="100%">
+    <VStack spacing={{ base: 4, md: 7 }} w="100%">
       <ExperienceCard
+        logoHeight={{ base: '1rem', md: '1.25rem' }}
         logoAlt="Groundbreaker"
         logoSrc="/images/groundbreaker.webp"
         href="https://www.linkedin.com/company/groundbreakerco/"
@@ -21,6 +32,7 @@ export const ExperienceSection = () => (
         )}
       />
       <ExperienceCard
+        logoHeight={{ base: '1.15rem', md: '1.438rem' }}
         logoAlt="Gazin Tech"
         logoSrc="/images/gazin.webp"
         href="https://www.linkedin.com/company/gazin-tech/"
@@ -32,6 +44,7 @@ export const ExperienceSection = () => (
         )}
       />
       <ExperienceCard
+        logoHeight={{ base: '1.25rem', md: '1.625rem' }}
         logoAlt="Vivaweb"
         logoSrc="/images/vivaweb.webp"
         href="https://www.linkedin.com/company/vivaweb/"
@@ -50,9 +63,9 @@ export const ExperienceSection = () => (
       px="6"
       py="3"
       mt="8"
-      alignSelf="end"
+      alignSelf={{ base: 'center', lg: 'end' }}
       _hover={{ color: 'custom.main' }}
-      fontSize="xl"
+      fontSize={{ base: 'md', lg: 'xl' }}
       bgColor="custom.dark"
     >
       <DownloadIcon mr="3" />

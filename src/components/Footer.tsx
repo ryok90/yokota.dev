@@ -1,16 +1,30 @@
-import { Center, HStack, Link, Text } from '@chakra-ui/react';
+import { Center, HStack, Link, Stack, Text } from '@chakra-ui/react';
 import { Logo } from './Logo';
 
 export const Footer = () => (
-  <Center as="footer" w="100%" maxW="none" bgColor="#151515" h="14" py="0">
-    <HStack w="100%" maxW="5xl" justifyContent="space-between">
-      <Logo />
+  <Center
+    as="footer"
+    w="100%"
+    maxW="none"
+    bgColor="#151515"
+    h={{ base: 'auto', md: 14 }}
+    py={{ base: 3, md: 0 }}
+  >
+    <Stack
+      direction={{ base: 'column', md: 'row' }}
+      w="100%"
+      maxW="5xl"
+      justifyContent={{ base: 'center', md: 'space-between' }}
+      alignItems="center"
+      spacing="2"
+    >
+      <Logo responsive />
       <HStack
         w="100%"
         maxW="5xl"
-        justifyContent="end"
+        justifyContent={{ base: 'center', md: 'end' }}
         alignItems="center"
-        fontSize="xs"
+        fontSize={{ base: '0.6125rem', md: 'xs' }}
         fontFamily="secondary"
       >
         <Text>
@@ -37,6 +51,6 @@ export const Footer = () => (
           </Link>
         </Text>
       </HStack>
-    </HStack>
+    </Stack>
   </Center>
 );
