@@ -1,5 +1,5 @@
 import { keyframes, Text } from '@chakra-ui/react';
-import { useTypewriter } from '../hooks/useTypewriter';
+import { useTypewriter } from './useTypewriter';
 
 const titles = [
   'Back-end Developer',

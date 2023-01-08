@@ -1,8 +1,6 @@
-import { Link, VStack } from '@chakra-ui/react';
+import { Link } from '@chakra-ui/react';
 import { useState } from 'react';
-import { EmailIcon } from './Icons/EmailIcon';
-import { GitHubIcon } from './Icons/GitHubIcon';
-import { LinkedInIcon } from './Icons/LinkedInIcon';
+import { EmailIcon, GitHubIcon, LinkedInIcon } from './Icons';
 
 export const Links = () => {
   // E-mail obfuscation from crawlers

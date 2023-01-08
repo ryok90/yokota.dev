@@ -1,5 +1,5 @@
-import { Flex, HStack, Stack, Text, VStack } from '@chakra-ui/react';
-import { Section } from './Section';
+import { Flex, Stack, Text, VStack } from '@chakra-ui/react';
+import { Section } from '../Section';
 import { Typewriter } from './Typewriter';
 
 const diameter = { base: 32, sm: 40, md: 44, lg: 52 };
@@ -24,7 +24,7 @@ export const MainSection = () => (
       />
       <VStack maxW="34rem" alignItems={{ base: 'center', lg: 'start' }}>
         <Text color="white" as="h1" fontSize={{ base: '1.75rem', md: '5xl' }}>
-          Hello, I'm{' '}
+          Hello, I&apos;m{' '}
           <Text as="span" color="custom.main">
             Rodrigo
           </Text>

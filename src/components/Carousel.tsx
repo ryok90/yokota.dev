@@ -1,4 +1,4 @@
-import { Box, Center, HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 

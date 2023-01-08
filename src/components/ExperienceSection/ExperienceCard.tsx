@@ -2,7 +2,6 @@ import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
   Accordion,
   AccordionButton,
-  AccordionIcon,
   AccordionItem,
   AccordionPanel,
   Box,
@@ -15,7 +14,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
-type ExperienceCardProps = {
+export type ExperienceCardProps = {
   logoAlt: string;
   logoSrc: string;
   logoHeight: Record<string, string>;
