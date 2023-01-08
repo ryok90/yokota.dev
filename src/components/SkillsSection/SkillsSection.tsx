@@ -4,9 +4,9 @@ import {
   useBreakpointValue,
   VStack,
 } from '@chakra-ui/react';
-import { Carousel } from '../Carousel';
+import { Carousel } from './Carousel';
 import { Section } from '../Section';
-import { cardsProps } from './consts';
+import { skillCardsProps } from './consts';
 import { SkillCard } from './SkillCard';
 import { WhatIDo } from './WhatIDo';
 
@@ -19,7 +19,7 @@ export const SkillsSection = () => {
         direction={{ base: 'column', lg: 'row' }}
         spacing={{ base: 0, lg: 14, xl: 28 }}
       >
-        <VStack spacing="0" display={{ base: 'none', lg: 'flex' }}>
+        <VStack as="h2" spacing="0" display={{ base: 'none', lg: 'flex' }}>
           <WhatIDo />
           <WhatIDo opacity={0.2} />
           <WhatIDo opacity={0.1} />
@@ -27,14 +27,10 @@ export const SkillsSection = () => {
           <WhatIDo opacity={0.01} />
         </VStack>
         {isMobile ? (
-          <Carousel>
-            {cardsProps.map((props, index) => (
-              <SkillCard {...props} key={index} />
-            ))}
-          </Carousel>
+          <Carousel skills={skillCardsProps} />
         ) : (
           <SimpleGrid columns={2} spacing="7" justifyItems="center">
-            {cardsProps.map((props, index) => (
+            {skillCardsProps.map((props, index) => (
               <SkillCard {...props} key={index} />
             ))}
           </SimpleGrid>

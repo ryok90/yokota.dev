@@ -3,6 +3,7 @@ import { ExperienceCardProps } from './ExperienceCard';
 export const experiences: ExperienceCardProps[] = [
   {
     logoHeight: { base: '1rem', md: '1.25rem' },
+    logoWidth: { base: '13rem', md: '16.25rem' },
     logoAlt: 'Groundbreaker',
     logoSrc: '/images/groundbreaker.webp',
     href: 'https://www.linkedin.com/company/groundbreakerco/',
@@ -17,6 +18,7 @@ export const experiences: ExperienceCardProps[] = [
   },
   {
     logoHeight: { base: '1.15rem', md: '1.438rem' },
+    logoWidth: { base: '9.694rem', md: '12.125rem' },
     logoAlt: 'Gazin Tech',
     logoSrc: '/images/gazin.webp',
     href: 'https://www.linkedin.com/company/gazin-tech/',
@@ -31,6 +33,7 @@ export const experiences: ExperienceCardProps[] = [
   },
   {
     logoHeight: { base: '1.25rem', md: '1.625rem' },
+    logoWidth: { base: '5.913rem', md: '7.688rem' },
     logoAlt: 'Vivaweb',
     logoSrc: '/images/vivaweb.webp',
     href: 'https://www.linkedin.com/company/vivaweb/',

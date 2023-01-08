@@ -1,16 +1,17 @@
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box, Center, HStack, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import { SkillCard, SkillCardProps } from './SkillCard';
 
-type CarouselProps = { children: React.ReactNode[] };
+type CarouselProps = { skills: SkillCardProps[] };
 
-export const Carousel = ({ children }: CarouselProps) => {
+export const Carousel = ({ skills }: CarouselProps) => {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
   const updateActive = (value: number) => {
     if (value < 0) return;
-    if (value > children.length - 1) return setActive(0);
+    if (value > skills.length - 1) return setActive(0);
     setActive(value);
   };
 
@@ -46,25 +47,31 @@ export const Carousel = ({ children }: CarouselProps) => {
         transform={`translateX(${37.5 - active * 25}%)`}
         textAlign="center"
       >
-        {children.map((child, index) => (
+        {skills.map((skillProps, index) => (
           <Box mx="1.125rem" key={index}>
-            {child}
+            <SkillCard {...skillProps} />
           </Box>
         ))}
       </Box>
-      <HStack spacing="4">
-        {children.map((_, index) => (
-          <Box
+      <HStack spacing="0">
+        {skills.map((skillProps, index) => (
+          <Center
             as="button"
+            w="6"
+            h="6"
             key={index}
             onClick={() => setActive(index)}
-            w="2"
-            h="2"
-            borderRadius="full"
-            bgColor={
-              active === index ? 'custom.lighterDark' : 'custom.lightDark'
-            }
-          />
+            aria-label={skillProps.title}
+          >
+            <Box
+              w="2"
+              h="2"
+              borderRadius="full"
+              bgColor={
+                active === index ? 'custom.lighterDark' : 'custom.lightDark'
+              }
+            />
+          </Center>
         ))}
       </HStack>
     </VStack>

@@ -6,7 +6,7 @@ export const lowerGradient =
   'linear-gradient(180deg, rgba(249, 249, 249, 0.0116) 0.87%, rgba(249, 249, 249, 0) 80%)';
 export const mobileGradient =
   'linear-gradient(180deg, rgba(249, 249, 249, 0.04) 0.06%, rgba(249, 249, 249, 0) 100%);';
-export const cardsProps: SkillCardProps[] = [
+export const skillCardsProps: SkillCardProps[] = [
   {
     title: 'Back-end',
     description:

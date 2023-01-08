@@ -18,6 +18,7 @@ export const Links = () => {
         _hover={{ opacity: 0.6 }}
         onMouseOver={handleFocus}
         onFocus={handleFocus}
+        aria-label="Email"
       >
         <EmailIcon />
       </Link>
@@ -26,6 +27,7 @@ export const Links = () => {
         target="_blank"
         rel="noopener"
         _hover={{ opacity: 0.6 }}
+        aria-label="Linkedin"
       >
         <LinkedInIcon />
       </Link>
@@ -34,6 +36,7 @@ export const Links = () => {
         target="_blank"
         rel="noopener"
         _hover={{ opacity: 0.6 }}
+        aria-label="GitHub"
       >
         <GitHubIcon />
       </Link>

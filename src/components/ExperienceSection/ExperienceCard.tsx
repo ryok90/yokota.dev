@@ -18,6 +18,7 @@ export type ExperienceCardProps = {
   logoAlt: string;
   logoSrc: string;
   logoHeight: Record<string, string>;
+  logoWidth: Record<string, string>;
   jobTitle: string;
   period: string;
   description: string;
@@ -29,6 +30,7 @@ export const ExperienceCard = ({
   logoAlt,
   logoSrc,
   logoHeight,
+  logoWidth,
   jobTitle,
   period,
   description,
@@ -38,7 +40,13 @@ export const ExperienceCard = ({
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   const logoComp = (
-    <Image h={logoHeight} src={logoSrc} mb={{ base: 0, md: 2 }} alt={logoAlt} />
+    <Image
+      h={logoHeight}
+      w={logoWidth}
+      src={logoSrc}
+      mb={{ base: 0, md: 2 }}
+      alt={logoAlt}
+    />
   );
 
   const titleComp = (
