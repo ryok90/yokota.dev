@@ -17,6 +17,7 @@ export const Footer = () => (
       justifyContent={{ base: 'center', md: 'space-between' }}
       alignItems="center"
       spacing="2"
+      px={{ base: 9, xl: 0 }}
     >
       <Logo responsive />
       <HStack
