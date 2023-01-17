@@ -1,3 +1,8 @@
+html,
+body {
+  background-color: #121212;
+}
+
 @font-face {
   font-family: 'Electrolize';
   font-display: block;

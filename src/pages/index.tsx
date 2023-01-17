@@ -1,18 +1,22 @@
+import { ExperienceSection } from '@/components/ExperienceSection';
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
+import { Links } from '@/components/Links';
+import { MainSection } from '@/components/MainSection';
+import { SkillsSection } from '@/components/SkillsSection';
 import { Box, HStack, VStack } from '@chakra-ui/react';
-import { ExperienceSection } from './components/ExperienceSection';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { Links } from './components/Links';
-import { MainSection } from './components/MainSection';
-import { SkillsSection } from './components/SkillsSection';
+import Head from 'next/head';
 
-function App() {
+export default function Home() {
   return (
     <VStack
       bgColor={'custom.background'}
       w="100%"
       spacing={{ base: 20, lg: 40 }}
     >
+      <Head>
+        <title>Rodrigo Yokota - Software Engineer</title>
+      </Head>
       <Header />
       <HStack w="100%" alignItems="start" justifyContent="center" spacing="0">
         <VStack
@@ -38,5 +42,3 @@ function App() {
     </VStack>
   );
 }
-
-export default App;
