@@ -13,15 +13,13 @@ import { WhatIDo } from './WhatIDo';
 export const SkillsSection = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true }, { fallback: 'lg' });
 
-  console.log({ isDesktop });
-
   return (
     <Section px={{ base: 9, md: 0 }}>
       <Stack
         direction={{ base: 'column', lg: 'row' }}
         spacing={{ base: 0, lg: 14, xl: 28 }}
       >
-        <VStack as="h2" spacing="0" display={{ base: 'none', lg: 'flex' }}>
+        <VStack spacing="0" display={{ base: 'none', lg: 'flex' }}>
           <WhatIDo />
           <WhatIDo opacity={0.2} />
           <WhatIDo opacity={0.1} />

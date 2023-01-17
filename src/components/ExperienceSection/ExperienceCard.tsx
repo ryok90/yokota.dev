@@ -71,8 +71,6 @@ export const ExperienceCard = ({
       as="ul"
       display={{ base: 'flex', md: 'none', lg: 'flex' }}
       flexWrap={{ base: 'wrap', md: 'nowrap' }}
-      divider={isMobile ? undefined : <>&nbsp;&bull;&nbsp;</>}
-      listStyleType="none"
       justifyContent="space-between"
       fontSize="xs"
       fontFamily="secondary"
@@ -81,7 +79,7 @@ export const ExperienceCard = ({
       w={{ base: '90%', lg: '100%' }}
     >
       {techs.map((tech, index) => (
-        <Box as="li" key={`${index + tech}`} pr="2" lineHeight="8">
+        <Box as="li" key={`${index + tech}`} pr="2" lineHeight="8" listStyleType={{ base: 'none', lg: index === 0 ? 'none' : 'disc' }}>
           {tech}
         </Box>
       ))}
