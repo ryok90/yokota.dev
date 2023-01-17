@@ -11,7 +11,9 @@ import { SkillCard } from './SkillCard';
 import { WhatIDo } from './WhatIDo';
 
 export const SkillsSection = () => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
+  const isDesktop = useBreakpointValue({ base: false, lg: true }, { fallback: 'lg' });
+
+  console.log({ isDesktop });
 
   return (
     <Section px={{ base: 9, md: 0 }}>
@@ -26,14 +28,14 @@ export const SkillsSection = () => {
           <WhatIDo opacity={0.05} />
           <WhatIDo opacity={0.01} />
         </VStack>
-        {isMobile ? (
-          <Carousel skills={skillCardsProps} />
-        ) : (
+        {isDesktop ? (
           <SimpleGrid columns={2} spacing="7" justifyItems="center">
             {skillCardsProps.map((props, index) => (
               <SkillCard {...props} key={index} />
             ))}
           </SimpleGrid>
+        ) : (
+          <Carousel skills={skillCardsProps} />
         )}
       </Stack>
     </Section>
