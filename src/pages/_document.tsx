@@ -32,6 +32,8 @@ export default function Document() {
           property="og:title"
           content="Rodrigo Yokota - Software Engineer"
         />
+        <meta property="og:site_name" content="Rodrigo Yokota" />
+        <meta property="og:url" content="https://yokota.dev" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
