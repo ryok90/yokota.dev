@@ -11,11 +11,42 @@ export default function Document() {
         />
         <Script
           id="gtm"
+          type="text/javascript"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
           gtag('config', 'G-K4BZTP6YKK');`,
+          }}
+        />
+        <Script
+          id="schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              {
+                "@context": "https://schema.org/",
+                "@type": "Person",
+                "name": "Rodrigo Yokota",
+                "url": "https://yokota.dev",
+                "image": "https://yokota.dev/images/rodrigo-yokota.webp",
+                "sameAs": [
+                  "https://www.facebook.com/ryok90",
+                  "https://twitter.com/ryok90",
+                  "https://www.instagram.com/rodrigo.yokota/",
+                  "https://www.youtube.com/@rodrigo.yokota",
+                  "https://www.linkedin.com/in/rodrigo-yokota/",
+                  "https://github.com/ryok90",
+                  "https://yokota.dev"
+                ],
+                "jobTitle": "Software Engineer",
+                "worksFor": {
+                  "@type": "Organization",
+                  "name": "Groundbreaker"
+                }
+              }`,
           }}
         />
         <meta charSet="UTF-8" />
@@ -34,7 +65,6 @@ export default function Document() {
         />
         <meta property="og:site_name" content="Rodrigo Yokota" />
         <meta property="og:url" content="https://yokota.dev" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
           content="rodrigo yokota, software engineer, web development, software development, software, computer science,

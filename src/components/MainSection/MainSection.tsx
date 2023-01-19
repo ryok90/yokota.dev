@@ -23,10 +23,10 @@ export const MainSection = () => (
         backgroundColor="custom.main"
       />
       <VStack maxW="34rem" alignItems={{ base: 'center', lg: 'start' }}>
-        <Text color="white" as="h1" fontSize={{ base: '1.75rem', md: '5xl' }}>
-          Hello, I&apos;m{' '}
+        <Text color="white" as="h1" fontSize={{ base: '2xl', md: '5xl' }}>
+          Hi, I&apos;m{' '}
           <Text as="span" color="custom.main">
-            Rodrigo
+            Rodrigo Yokota
           </Text>
           !
         </Text>
