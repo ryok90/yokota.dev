@@ -6,7 +6,7 @@ This landing page was made possible with the incredible design work of [Guyllian
 I have a dream of becoming the most famous **Rodrigo Yokota** of *Google Search*. This landing page is the beginning of the achievement of this dream. It is unbelievably hard to do so seeing that the first place is held today by a great artist with a bunch of published and admired work. How can an introverted Software Engineer compete with that?
 
 ## The Tools
-To develop this simple webpage I used [React](https://reactjs.org/) with [ChakraUI](https://chakra-ui.com/) for styling. To boilerplate it all I used [Next.js](https://nextjs.org/). My domain was bought on [Google Domains](https://domains.google/) which made some things easier and faster. Hosting on the easy and fast [Vercel](https://vercel.com/).
+To develop this simple webpage I used [React](https://reactjs.org/) with [ChakraUI](https://chakra-ui.com/) for styling. To boilerplate it all I used [Next.js](https://nextjs.org/). My domain was bought on [Google Domains](https://domains.google/) which made some things easier and faster. I left it all hosted on [Vercel](https://vercel.com/) which has some automated workflows for the build and deploy.
 
 Simple reasons for those choices:
 - **React**: a library that I am most familiar with
