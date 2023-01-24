@@ -1,4 +1,5 @@
-import { Flex, Stack, Text, VStack } from '@chakra-ui/react';
+import { Center, Flex, Stack, Text, VStack } from '@chakra-ui/react';
+import Image from 'next/image';
 import { Section } from '../Section';
 import { Typewriter } from './Typewriter';
 
@@ -13,15 +14,20 @@ export const MainSection = () => (
       alignItems="center"
       spacing={{ base: 10, lg: 28 }}
     >
-      <Flex
+      <Center
         minW={diameter}
         w={diameter}
         h={diameter}
         borderRadius="full"
         overflow="hidden"
-        background="url('/images/rodrigo-yokota.webp') bottom/contain no-repeat"
-        backgroundColor="custom.main"
-      />
+        pos="relative"
+      >
+        <Image
+          src="/images/rodrigo-yokota.webp"
+          alt="Rodrigo Yokota"
+          fill
+        />
+      </Center>
       <VStack maxW="34rem" alignItems={{ base: 'center', lg: 'start' }}>
         <Text color="white" as="h1" fontSize={{ base: '2xl', md: '5xl' }}>
           Hi, I&apos;m{' '}
