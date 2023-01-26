@@ -22,11 +22,7 @@ export const MainSection = () => (
         overflow="hidden"
         pos="relative"
       >
-        <Image
-          src="/images/rodrigo-yokota.webp"
-          alt="Rodrigo Yokota"
-          fill
-        />
+        <Image src="/images/rodrigo-yokota.webp" alt="Rodrigo Yokota" fill />
       </Center>
       <VStack maxW="34rem" alignItems={{ base: 'center', lg: 'start' }}>
         <Text color="white" as="h1" fontSize={{ base: '2xl', md: '5xl' }}>

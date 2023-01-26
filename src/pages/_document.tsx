@@ -11,8 +11,7 @@ export default function Document() {
         />
         <Script
           id="gtm"
-          type="text/javascript"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
@@ -61,14 +60,13 @@ export default function Document() {
         <meta
           name="og:title"
           property="og:title"
-          content="Rodrigo Yokota - Software Engineer"
+          content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
         />
         <meta property="og:site_name" content="Rodrigo Yokota" />
         <meta property="og:url" content="https://yokota.dev" />
         <meta
           name="keywords"
-          content="rodrigo yokota, software engineer, web development, software development, software, computer science,
-          programming, coding, programmer, coder, javascript, typescript, react, nodejs, aws, frontend, backend, fullstack, information technology"
+          content="rodrigo yokota, software engineer, web development, software development, software, computer science, developper, programming, coding, programmer, coder, javascript, typescript, react, nodejs, aws, frontend, backend, full-stack, information technology, clean architecture, cloud providers"
         />
         <meta
           name="theme-color"
