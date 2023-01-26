@@ -15,7 +15,7 @@ export default function Home() {
       spacing={{ base: 20, lg: 40 }}
     >
       <Head>
-        <title>Rodrigo Yokota - Software Engineer</title>
+        <title>Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js</title>
       </Head>
       <Header />
       <HStack w="100%" alignItems="start" justifyContent="center" spacing="0">
