@@ -1,4 +1,4 @@
-import { Center, Flex, Stack, Text, VStack } from '@chakra-ui/react';
+import { Center, Stack, Text, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import { Section } from '../Section';
 import { Typewriter } from './Typewriter';
