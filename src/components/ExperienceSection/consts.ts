@@ -7,8 +7,8 @@ export const experiences: ExperienceCardProps[] = [
     logoAlt: 'Groundbreaker',
     logoSrc: '/images/groundbreaker.webp',
     href: 'https://www.linkedin.com/company/groundbreakerco/',
-    jobTitle: 'Software Engineer',
-    period: 'Dec/2021 - Present',
+    jobTitle: 'Senior Software Engineer',
+    period: 'Dec/2021 - Jan/2023',
     description:
       "Developing new features as well as migrating legacy structures taking full advantage of our cloud provider's solutions. Assisting in decision making process and helping organize implementations.",
     techs:
@@ -22,7 +22,7 @@ export const experiences: ExperienceCardProps[] = [
     logoAlt: 'Gazin Tech',
     logoSrc: '/images/gazin.webp',
     href: 'https://www.linkedin.com/company/gazin-tech/',
-    jobTitle: 'Full-stack Developer',
+    jobTitle: 'Software Engineer',
     period: 'Sep/2020 - Nov/2021',
     description:
       'Participated in the development of the new e-commerce mobile app and improved the e-commerce web app. Took point in the development of an integrating micro-service to calculate shipping costs and notify updates.',
