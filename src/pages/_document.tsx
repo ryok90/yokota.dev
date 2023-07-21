@@ -48,22 +48,55 @@ export default function Document() {
               }`,
           }}
         />
+
+        {/* Google / Search Engine Tags */}
         <meta charSet="UTF-8" />
+        <meta property="og:site_name" content="Rodrigo Yokota" />
+        <meta
+          itemProp="name"
+          content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
+        />
+        <meta
+          itemProp="description"
+          content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
+        />
+        <meta
+          itemProp="image"
+          content="https://yokota.dev/images/rodrigo-yokota.webp"
+        />
         <meta
           name="description"
           content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
         />
+
+        {/* Facebook Meta Tags */}
+        <meta property="og:url" content="https://yokota.dev" />
+        <meta property="og:type" content="website" />
         <meta
-          name="twitter:card"
-          content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
-        />
-        <meta
-          name="og:title"
           property="og:title"
           content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
         />
-        <meta property="og:site_name" content="Rodrigo Yokota" />
-        <meta property="og:url" content="https://yokota.dev" />
+        <meta
+          property="og:description"
+          content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
+        />
+        <meta
+          property="og:image"
+          content="https://yokota.dev/images/rodrigo-yokota.webp"
+        />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
+        />
+        <meta
+          name="twitter:description"
+          content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
+        />
+        <meta name="twitter:image" content="https://yokota.dev/images/rodrigo-yokota.webp" />
+
         <meta
           name="keywords"
           content="rodrigo yokota, software engineer, web development, software development, software, computer science, developper, programming, coding, programmer, coder, javascript, typescript, react, nodejs, aws, frontend, backend, full-stack, information technology, clean architecture, cloud providers"
