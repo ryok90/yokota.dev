@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" itemScope itemType="http://schema.org/WebPage">
       <Head>
         <Script
           async
@@ -51,7 +51,6 @@ export default function Document() {
         />
 
         {/* Google / Search Engine Tags */}
-        <meta charSet="UTF-8" />
         <meta property="og:site_name" content="Rodrigo Yokota - Software Engineer" />
         <meta
           itemProp="name"
