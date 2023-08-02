@@ -11,7 +11,8 @@ export default function Document() {
         />
         <Script
           id="gtm"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
+          type="application/javascript"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
