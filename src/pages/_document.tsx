@@ -5,22 +5,16 @@ export default function Document() {
   return (
     <Html lang="en" itemScope itemType="http://schema.org/WebPage">
       <Head>
-        <Script
-          async
-          strategy="beforeInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-K4BZTP6YKK"
-        />
-        <Script
-          id="gtm"
-          strategy="beforeInteractive"
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-K4BZTP6YKK" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-K4BZTP6YKK');`,
-          }}
-        />
+ 
+          gtag('config', 'G-K4BZTP6YKK');
+        `}
+        </Script>
         <Script
           id="schema"
           type="application/ld+json"
@@ -53,7 +47,10 @@ export default function Document() {
         />
 
         {/* Google / Search Engine Tags */}
-        <meta property="og:site_name" content="Rodrigo Yokota - Software Engineer" />
+        <meta
+          property="og:site_name"
+          content="Rodrigo Yokota - Software Engineer"
+        />
         <meta
           itemProp="name"
           content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
@@ -97,7 +94,10 @@ export default function Document() {
           name="twitter:description"
           content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
         />
-        <meta name="twitter:image" content="https://yokota.dev/images/rodrigo-yokota.webp" />
+        <meta
+          name="twitter:image"
+          content="https://yokota.dev/images/rodrigo-yokota.webp"
+        />
 
         <meta
           name="keywords"
