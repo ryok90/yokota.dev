@@ -7,6 +7,7 @@ export default function Document() {
       <Head>
         <Script
           async
+          strategy="beforeInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-K4BZTP6YKK"
         />
         <Script
