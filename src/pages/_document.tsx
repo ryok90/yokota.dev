@@ -28,7 +28,7 @@ export default function Document() {
                 "@context": "https://schema.org/",
                 "@type": "WebSite",
                 "name": "Rodrigo Yokota - Software Engineer",
-                "alternateName": "RYSE",
+                "alternateName": "Rodrigo Yokota",
                 "url": "https://yokota.dev",
                 "image": "https://yokota.dev/images/rodrigo-yokota.webp",
                 "sameAs": [
@@ -39,12 +39,7 @@ export default function Document() {
                   "https://www.linkedin.com/in/rodrigo-yokota/",
                   "https://github.com/ryok90",
                   "https://yokota.dev"
-                ],
-                "jobTitle": "Senior Software Engineer",
-                "worksFor": {
-                  "@type": "Organization",
-                  "name": "Vaullti"
-                }
+                ]
               }`,
           }}
         />
@@ -56,7 +51,7 @@ export default function Document() {
         />
         <meta
           itemProp="name"
-          content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
+          content="Rodrigo Yokota - Software Engineer"
         />
         <meta
           itemProp="description"
@@ -76,7 +71,7 @@ export default function Document() {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
+          content="Rodrigo Yokota - Software Engineer"
         />
         <meta
           property="og:description"
@@ -91,7 +86,7 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js"
+          content="Rodrigo Yokota - Software Engineer"
         />
         <meta
           name="twitter:description"

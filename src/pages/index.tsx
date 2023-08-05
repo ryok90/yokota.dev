@@ -15,7 +15,7 @@ export default function Home() {
       spacing={{ base: 20, lg: 40 }}
     >
       <Head>
-        <title>Rodrigo Yokota - Full-stack Software Engineer - Javascript | Node.js</title>
+        <title>Rodrigo Yokota - Software Engineer</title>
       </Head>
       <Header />
       <HStack w="100%" alignItems="start" justifyContent="center" spacing="0">
@@ -35,7 +35,6 @@ export default function Home() {
           <SkillsSection />
           <ExperienceSection />
         </VStack>
-        {/* Replicate <Links /> width */}
         <Box w="4.5rem" display={{ base: 'none', xl: 'block' }} />
       </HStack>
       <Footer />
