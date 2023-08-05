@@ -5,15 +5,16 @@ export default function Document() {
   return (
     <Html lang="en" itemScope itemType="http://schema.org/WebPage">
       <Head>
-        {/* <!-- Google tag (gtag.js) --> */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4BZTP6YKK" />
-        <script>
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-K4BZTP6YKK');`}
-        </script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EYT1QRFKV1" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-EYT1QRFKV1');
+          `}
+        </Script>
         <Script
           id="schema"
           type="application/ld+json"
