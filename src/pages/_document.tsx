@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 export default function Document() {
   return (
-    <Html lang="en" itemScope itemType="http://schema.org/WebPage">
+    <Html lang="en">
       <Head>
         <Script
           strategy="afterInteractive"
