@@ -5,7 +5,10 @@ export default function Document() {
   return (
     <Html lang="en" itemScope itemType="http://schema.org/WebPage">
       <Head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EYT1QRFKV1" />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-EYT1QRFKV1"
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
