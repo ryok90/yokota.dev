@@ -49,10 +49,7 @@ export default function Document() {
           property="og:site_name"
           content="Rodrigo Yokota - Software Engineer"
         />
-        <meta
-          itemProp="name"
-          content="Rodrigo Yokota - Software Engineer"
-        />
+        <meta itemProp="name" content="Rodrigo Yokota - Software Engineer" />
         <meta
           itemProp="description"
           content="Rodrigo Yokota - Software engineer specialized on full-stack web development and cloud architecture with experience on multiplatform mobile app development."
@@ -97,6 +94,7 @@ export default function Document() {
           content="https://yokota.dev/images/rodrigo-yokota.webp"
         />
 
+        <meta name="wot-verification" content="87257869bc749468c39d" />
         <meta
           name="keywords"
           content="rodrigo yokota, software engineer, web development, software development, software, computer science, developper, programming, coding, programmer, coder, javascript, typescript, react, nodejs, aws, frontend, backend, full-stack, information technology, clean architecture, cloud providers"
