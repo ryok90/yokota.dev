@@ -38,7 +38,7 @@ export const MainSection = () => (
           textAlign={{ base: 'center', lg: 'start' }}
         >
           I am a full-stack software engineer, developing awesome web and mobile
-          applications since 2018. Forever learning and improving skills.
+          applications since 2018. Forever learning and improving.
         </Text>
         <Typewriter />
       </VStack>

@@ -2,6 +2,21 @@ import { ExperienceCardProps } from './ExperienceCard';
 
 export const experiences: ExperienceCardProps[] = [
   {
+    logoHeight: { base: '1.25rem', md: '1.5rem' },
+    logoWidth: { base: '5.85rem', md: '7.02rem' },
+    logoAlt: 'Vaullti',
+    logoSrc: '/images/vaullti-dark.webp',
+    href: 'https://www.linkedin.com/company/vaullti-inc/',
+    jobTitle: 'Senior Software Engineer',
+    period: 'Mar/2023 - Oct/2023',
+    description:
+      "Architecting and developing the first layers of the application as well as providing automated workflows for the whole infrastructure and code deployment.",
+    techs:
+      'Node.js,Serverless,Nx,Micro-services,ReactJS,Typescript,Javascript,DynamoDB,SQS,SNS,Route53,Cloudfront'.split(
+        ','
+      ),
+  },
+  {
     logoHeight: { base: '1rem', md: '1.25rem' },
     logoWidth: { base: '13rem', md: '16.25rem' },
     logoAlt: 'Groundbreaker',

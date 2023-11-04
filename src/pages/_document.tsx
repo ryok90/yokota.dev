@@ -27,7 +27,7 @@ export default function Document() {
               {
                 "@context": "https://schema.org/",
                 "@type": "WebSite",
-                "name": "Rodrigo Yokota - Software Engineer",
+                "name": "Rodrigo Yokota",
                 "alternateName": "Rodrigo Yokota",
                 "url": "https://yokota.dev",
                 "image": "https://yokota.dev/images/rodrigo-yokota.webp",

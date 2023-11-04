@@ -4,8 +4,8 @@ import { useTypewriter } from './useTypewriter';
 const titles = [
   'Back-end Developer',
   'Front-end Developer',
-  'Mobile App Experienced',
-  'SRE Aspirant',
+  'Mobile Dev Experience',
+  'AWS Certified',
 ];
 
 const caret = keyframes`
