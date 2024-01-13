@@ -2,6 +2,21 @@ import { ExperienceCardProps } from './ExperienceCard';
 
 export const experiences: ExperienceCardProps[] = [
   {
+    logoHeight: { base: '1.5rem', md: '2rem' },
+    logoWidth: { base: '8.53rem', md: '11.375rem' },
+    logoAlt: 'Valor Software',
+    logoSrc: '/images/valor.webp',
+    href: 'https://www.linkedin.com/company/valor-software/',
+    jobTitle: 'Senior Software Engineer',
+    period: 'Nov/2023 - Present',
+    description:
+      'Developing features of a groundbreaking tool to aid bigger scale projects using Module Federation to visualize, deploy and monitor federated applications.',
+    techs:
+      'Nx,Node.js,Next.js,NestJS,Typescript,Javascript,PostgreSQL,Module Federation,Micro-frontends,Webpack,Rspack'.split(
+        ','
+      ),
+  },
+  {
     logoHeight: { base: '1.25rem', md: '1.5rem' },
     logoWidth: { base: '5.85rem', md: '7.02rem' },
     logoAlt: 'Vaullti',
@@ -10,7 +25,7 @@ export const experiences: ExperienceCardProps[] = [
     jobTitle: 'Senior Software Engineer',
     period: 'Mar/2023 - Oct/2023',
     description:
-      "Architecting and developing the first layers of the application as well as providing automated workflows for the whole infrastructure and code deployment.",
+      'Architecting and developing the first layers of the application as well as providing automated workflows for the whole infrastructure and code deployment.',
     techs:
       'Node.js,Serverless,Nx,Micro-services,ReactJS,Typescript,Javascript,DynamoDB,SQS,SNS,Route53,Cloudfront'.split(
         ','
@@ -47,11 +62,11 @@ export const experiences: ExperienceCardProps[] = [
       ),
   },
   {
-    logoHeight: { base: '1.25rem', md: '1.625rem' },
-    logoWidth: { base: '5.913rem', md: '7.688rem' },
-    logoAlt: 'Vivaweb',
-    logoSrc: '/images/vivaweb.webp',
-    href: 'https://www.linkedin.com/company/vivaweb/',
+    logoHeight: { base: '1.5rem', md: '2rem' },
+    logoWidth: { base: '6.375rem', md: '8.5rem' },
+    logoAlt: 'Vivaworks',
+    logoSrc: '/images/vivaworks.webp',
+    href: 'https://www.linkedin.com/company/vivaworks/',
     jobTitle: 'Full-stack Developer',
     period: 'May/2019 - Sep/2020',
     description:
