@@ -25,7 +25,7 @@ const LinkItem = ({ href, icon, label, description, isDownload }: LinkItemProps)
       border='1px solid'
       borderColor='custom.lightDark'
       borderRadius='16px'
-      p='6'
+      p={{ base: '4', md: '6' }}
       display='flex'
       alignItems='center'
       gap='4'
@@ -88,9 +88,9 @@ export default function LinksPage() {
     <VStack
       minH='100vh'
       bgColor='custom.background'
-      p='8'
+      p={{ base: '4', md: '8' }}
       pt='0'
-      spacing='8'
+      spacing={{ base: '6', md: '8' }}
       align='center'
       justify='center'
     >
@@ -113,10 +113,10 @@ export default function LinksPage() {
         >
           <Image src='/images/rodrigo-yokota.webp' alt='Rodrigo Yokota' fill />
         </Center>
-        <Text fontSize='3xl' fontWeight='bold' color='custom.main'>
+        <Text fontSize={{ base: '2xl', md: '3xl' }} fontWeight='bold' color='custom.main'>
           Rodrigo Yokota
         </Text>
-        <Text color='custom.lighterDark' fontSize='lg' maxW='400px'>
+        <Text color='custom.lighterDark' fontSize={{ base: 'md', md: 'lg' }} maxW='400px' px='4'>
           Software Engineer passionate about building great products
         </Text>
       </VStack>
