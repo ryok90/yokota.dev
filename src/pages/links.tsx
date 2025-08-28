@@ -1,5 +1,5 @@
 import { Header } from '@/components/Header';
-import { GitHubIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon, XIcon } from '@/components/Icons';
+import { ContactIcon, GitHubIcon, InstagramIcon, LinkedInIcon, XIcon } from '@/components/Icons';
 import { Box, Center, Link, Text, VStack } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -9,13 +9,14 @@ interface LinkItemProps {
   icon: React.ReactNode;
   label: string;
   description: string;
+  isDownload?: boolean;
 }
 
-const LinkItem = ({ href, icon, label, description }: LinkItemProps) => (
+const LinkItem = ({ href, icon, label, description, isDownload }: LinkItemProps) => (
   <Link
     href={href}
-    target='_blank'
-    rel='noopener noreferrer'
+    target={isDownload ? undefined : '_blank'}
+    rel={isDownload ? undefined : 'noopener noreferrer'}
     w='100%'
     maxW='400px'
     _hover={{
@@ -52,6 +53,12 @@ export default function LinksPage() {
   const diameter = { base: 28, sm: 32, md: 36, lg: 40 };
   const links = [
     {
+      href: '/api/contact',
+      icon: <ContactIcon />,
+      label: 'Contact',
+      description: 'Add me to your contacts',
+    },
+    {
       href: 'https://www.linkedin.com/in/rodrigo-yokota/',
       icon: <LinkedInIcon />,
       label: 'LinkedIn',
@@ -62,12 +69,6 @@ export default function LinksPage() {
       icon: <GitHubIcon />,
       label: 'GitHub',
       description: 'Check out my projects',
-    },
-    {
-      href: 'https://wa.me/5511999999999',
-      icon: <WhatsAppIcon />,
-      label: 'WhatsApp',
-      description: 'Direct message me',
     },
     {
       href: 'https://www.instagram.com/rodrigo.yokota/',
@@ -128,6 +129,7 @@ export default function LinksPage() {
             icon={link.icon}
             label={link.label}
             description={link.description}
+            isDownload={link.label === 'Contact'}
           />
         ))}
       </VStack>
