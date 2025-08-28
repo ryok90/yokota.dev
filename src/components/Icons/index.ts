@@ -3,5 +3,6 @@ export { EmailIcon } from './EmailIcon';
 export { GitHubIcon } from './GitHubIcon';
 export { InstagramIcon } from './InstagramIcon';
 export { LinkedInIcon } from './LinkedInIcon';
+export { LinksIcon } from './LinksIcon';
 export { WhatsAppIcon } from './WhatsAppIcon';
 export { XIcon } from './XIcon';

@@ -1,6 +1,7 @@
-import { Link } from '@chakra-ui/react';
+import { Box, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import { useState } from 'react';
-import { EmailIcon, GitHubIcon, LinkedInIcon } from './Icons';
+import { EmailIcon, GitHubIcon, LinkedInIcon, LinksIcon } from './Icons';
 
 export const Links = () => {
   // E-mail obfuscation from crawlers
@@ -18,28 +19,33 @@ export const Links = () => {
         _hover={{ opacity: 0.6 }}
         onMouseOver={handleFocus}
         onFocus={handleFocus}
-        aria-label="Email"
+        aria-label='Email'
       >
         <EmailIcon />
       </Link>
       <Link
-        href="https://www.linkedin.com/in/rodrigo-yokota/"
-        target="_blank"
-        rel="noopener"
+        href='https://www.linkedin.com/in/rodrigo-yokota/'
+        target='_blank'
+        rel='noopener'
         _hover={{ opacity: 0.6 }}
-        aria-label="Linkedin"
+        aria-label='Linkedin'
       >
         <LinkedInIcon />
       </Link>
       <Link
-        href="https://github.com/ryok90"
-        target="_blank"
-        rel="noopener"
+        href='https://github.com/ryok90'
+        target='_blank'
+        rel='noopener'
         _hover={{ opacity: 0.6 }}
-        aria-label="GitHub"
+        aria-label='GitHub'
       >
         <GitHubIcon />
       </Link>
+      <NextLink href='/links' aria-label='All Links'>
+        <Box _hover={{ opacity: 0.6 }}>
+          <LinksIcon />
+        </Box>
+      </NextLink>
     </>
   );
 };
