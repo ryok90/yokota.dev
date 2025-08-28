@@ -1,5 +1,7 @@
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { ContactIcon, GitHubIcon, InstagramIcon, LinkedInIcon, XIcon } from '@/components/Icons';
+import { Logo } from '@/components/Logo';
 import { Box, Center, Link, Text, VStack } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -85,54 +87,57 @@ export default function LinksPage() {
   ];
 
   return (
-    <VStack
-      minH='100vh'
-      bgColor='custom.background'
-      p={{ base: '4', md: '8' }}
-      pt='0'
-      spacing={{ base: '6', md: '8' }}
-      align='center'
-      justify='center'
-    >
-      <Head>
-        <title>Links - Rodrigo Yokota</title>
-        <meta
-          name='description'
-          content='Connect with Rodrigo Yokota on social media and professional platforms'
-        />
-      </Head>
-      <Header />
-      <VStack spacing='2' textAlign='center'>
-        <Center
-          minW={diameter}
-          w={diameter}
-          h={diameter}
-          borderRadius='full'
-          overflow='hidden'
-          pos='relative'
-        >
-          <Image src='/images/rodrigo-yokota.webp' alt='Rodrigo Yokota' fill />
-        </Center>
-        <Text fontSize={{ base: '2xl', md: '3xl' }} fontWeight='bold' color='custom.main'>
-          Rodrigo Yokota
-        </Text>
-        <Text color='custom.lighterDark' fontSize={{ base: 'md', md: 'lg' }} maxW='400px' px='4'>
-          Software Engineer passionate about building great products
-        </Text>
-      </VStack>
-
-      <VStack spacing='4' w='100%' align='center'>
-        {links.map((link) => (
-          <LinkItem
-            key={link.label}
-            href={link.href}
-            icon={link.icon}
-            label={link.label}
-            description={link.description}
-            isDownload={link.label === 'Contact'}
+    <>
+      <VStack
+        minH='100vh'
+        bgColor='custom.background'
+        p={{ base: '4', md: '8' }}
+        spacing={{ base: '6', md: '8' }}
+        mb={{ base: '6', md: '8' }}
+        align='center'
+        justify='center'
+      >
+        <Head>
+          <title>Links - Rodrigo Yokota</title>
+          <meta
+            name='description'
+            content='Connect with Rodrigo Yokota on social media and professional platforms'
           />
-        ))}
+        </Head>
+        <Logo />
+        <VStack spacing='2' textAlign='center'>
+          <Center
+            minW={diameter}
+            w={diameter}
+            h={diameter}
+            borderRadius='full'
+            overflow='hidden'
+            pos='relative'
+          >
+            <Image src='/images/rodrigo-yokota.webp' alt='Rodrigo Yokota' fill />
+          </Center>
+          <Text fontSize={{ base: '2xl', md: '3xl' }} fontWeight='bold' color='custom.main'>
+            Rodrigo Yokota
+          </Text>
+          <Text color='custom.lighterDark' fontSize={{ base: 'md', md: 'lg' }} maxW='400px' px='4'>
+            Software Engineer passionate about building great products
+          </Text>
+        </VStack>
+
+        <VStack spacing='4' w='100%' align='center'>
+          {links.map((link) => (
+            <LinkItem
+              key={link.label}
+              href={link.href}
+              icon={link.icon}
+              label={link.label}
+              description={link.description}
+              isDownload={link.label === 'Contact'}
+            />
+          ))}
+        </VStack>
       </VStack>
-    </VStack>
+      <Footer />
+    </>
   );
 }
