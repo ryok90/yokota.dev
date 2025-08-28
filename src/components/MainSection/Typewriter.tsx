@@ -1,4 +1,5 @@
-import { keyframes, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
+import { keyframes } from '@emotion/react';
 import { useTypewriter } from './useTypewriter';
 
 const titles = [
