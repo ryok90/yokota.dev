@@ -19,11 +19,6 @@ const LinkItem = ({ href, icon, label, description, isDownload }: LinkItemProps)
     rel={isDownload ? undefined : 'noopener noreferrer'}
     w='100%'
     maxW='400px'
-    _hover={{
-      transform: 'translateY(-2px)',
-      boxShadow: '0 4px 20px rgba(0, 217, 192, 0.2)',
-    }}
-    transition='all 0.3s ease'
   >
     <Box
       bg='custom.dark'
@@ -35,6 +30,11 @@ const LinkItem = ({ href, icon, label, description, isDownload }: LinkItemProps)
       alignItems='center'
       gap='4'
       w='100%'
+      _hover={{
+        transform: 'translateY(-2px)',
+        boxShadow: '0 4px 20px rgba(0, 217, 192, 0.2)',
+      }}
+      transition='all 0.3s ease'
     >
       <Box flexShrink={0}>{icon}</Box>
       <Box>
