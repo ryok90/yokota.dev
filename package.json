@@ -13,17 +13,16 @@
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@next/font": "13.1.2",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.10",
-    "eslint": "8.32.0",
-    "eslint-config-next": "13.1.2",
-    "framer-motion": "^8.4.3",
-    "next": "13.1.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@types/node": "24.3.0",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "eslint": "9.34.0",
+    "eslint-config-next": "15.5.2",
+    "framer-motion": "^12.23.12",
+    "next": "15.5.2",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "react-swipeable": "^7.0.0",
-    "typescript": "4.9.4"
+    "typescript": "5.9.2"
   }
 }

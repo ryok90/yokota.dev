@@ -1,27 +1,11 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-EYT1QRFKV1"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'G-EYT1QRFKV1');
-          `}
-        </Script>
-        <Script
-          id="schema"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               {
