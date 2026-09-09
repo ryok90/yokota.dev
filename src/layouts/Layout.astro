@@ -10,7 +10,8 @@ interface Props {
 
 const { title, description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const socialImageUrl = new URL('/og-card.jpg', Astro.site);
+// Preview builds can reference a published card while production stays on its canonical domain.
+const socialImageUrl = new URL(import.meta.env.SOCIAL_IMAGE_URL ?? '/og-card.jpg', Astro.site);
 
 const personStructuredData = {
   '@context': 'https://schema.org',
