@@ -35,13 +35,24 @@ const focusAreas = [
   },
 ];
 
+const tickerItems = [
+  'Module Federation',
+  'Build Tooling',
+  'Edge Delivery',
+  'Agent Platforms',
+  'Developer Experience',
+  'Artificial Intelligence',
+  'Micro Frontends',
+  'Cloud Integrations',
+];
+
 const experience = [
   {
-    period: 'Dec 2025 - now',
+    period: 'Nov 2023 - now',
     company: 'Zephyr Cloud',
     role: 'Platform Engineer',
     description:
-      'Building the platform layer behind federated frontend delivery and agent-powered software across Zephyr Cloud and The AI Platform.',
+      'Building the platform layer behind federated frontend delivery and agent-powered software across Zephyr Cloud and The AI Platform. I started through Valor Software and moved directly to Zephyr Cloud in Dec 2025.',
     detail: 'Bundler integrations / cloud delivery / developer tooling / production systems',
     href: 'https://zephyr-cloud.io',
     current: true,
@@ -108,20 +119,12 @@ const projects = [
     command: 'brew install ryok90/guaranate/guaranate',
   },
   {
-    name: 'nextjs-mf-examples',
-    type: 'Module Federation',
+    name: 'Module Federation',
+    type: 'Open source / Contributor',
     description:
-      'Practical Next.js and Module Federation examples, built to turn tricky integration questions into working receipts.',
-    href: 'https://github.com/ryok90/nextjs-mf-examples',
-    command: 'git clone / inspect / break / learn',
-  },
-  {
-    name: 'tapple',
-    type: 'Web game',
-    description:
-      'The category-and-letter board game pulled onto the web for fast rounds with friends.',
-    href: 'https://github.com/ryok90/tapple',
-    command: 'side quest status: shipped',
+      'Contributing to the open-source ecosystem making independently built applications work together as one system.',
+    href: 'https://github.com/module-federation',
+    command: 'role: contributor',
   },
 ];
 ---
@@ -153,7 +156,7 @@ const projects = [
         <div class="hero__copy">
           <p class="eyebrow">
             <span class="signal-dot"></span>
-            Platform Engineer / Maringa, Brazil / UTC-3
+            Platform Engineer / Curitiba, Brazil / UTC-3
           </p>
           <h1 id="hero-title">
             I build the rails
@@ -161,7 +164,7 @@ const projects = [
           </h1>
           <p class="hero__intro">
             I work across build systems, cloud delivery, and developer experience at{' '}
-            <a href="https://zephyr-cloud.io" target="_blank" rel="noreferrer">Zephyr Cloud</a>, including the infrastructure behind{' '}
+            <a href="https://zephyr-cloud.io" target="_blank" rel="noreferrer">Zephyr Cloud</a>, and{' '}
             <a href="https://theaiplatform.app" target="_blank" rel="noreferrer">The AI Platform</a>. The goal is simple: make complex systems feel boring to operate.
           </p>
           <div class="hero__actions">
@@ -212,8 +215,11 @@ const projects = [
 
       <div class="ticker" aria-hidden="true">
         <div class="ticker__track">
-          <span>MODULE FEDERATION</span><i></i><span>BUILD TOOLING</span><i></i><span>EDGE DELIVERY</span><i></i><span>AGENT PLATFORMS</span><i></i><span>DEVELOPER EXPERIENCE</span><i></i>
-          <span>MODULE FEDERATION</span><i></i><span>BUILD TOOLING</span><i></i><span>EDGE DELIVERY</span><i></i><span>AGENT PLATFORMS</span><i></i><span>DEVELOPER EXPERIENCE</span><i></i>
+          {[0, 1].map(() => (
+            <div class="ticker__group">
+              {tickerItems.map((item) => <><span>{item}</span><i></i></>)}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -360,7 +366,7 @@ const projects = [
           <p class="about__lead">I am a Brazilian engineer who likes difficult systems, direct communication, and tools that respect the people using them.</p>
           <p>My path through mobile, commerce, SaaS, micro-frontends, and cloud infrastructure taught me to work across boundaries. I write mostly TypeScript, but I am also comfortable with Swift, Python, PHP, Dart, and a suspicious amount of YAML.</p>
           <dl class="about__details">
-            <div><dt>Based</dt><dd>Maringa, PR, Brazil</dd></div>
+            <div><dt>Based</dt><dd>Curitiba, PR, Brazil</dd></div>
             <div><dt>Certified</dt><dd>AWS Cloud Practitioner</dd></div>
             <div><dt>Off-screen</dt><dd>Keyboards, board games, native tools</dd></div>
           </dl>

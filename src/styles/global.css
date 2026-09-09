@@ -560,16 +560,22 @@ svg {
 .ticker__track {
   display: flex;
   width: max-content;
-  align-items: center;
-  gap: 1.25rem;
   padding-block: 0.8rem;
-  animation: ticker 30s linear infinite;
+  animation: ticker 40s linear infinite;
   font: 700 0.68rem/1 var(--mono);
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
-.ticker__track i {
+.ticker__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.ticker__group i {
   width: 0.4rem;
   height: 0.4rem;
   transform: rotate(45deg);
