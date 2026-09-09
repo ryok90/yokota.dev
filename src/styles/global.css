@@ -1065,7 +1065,7 @@ svg {
 
 .about__portrait span {
   position: absolute;
-  right: 0.75rem;
+  right: -0.40rem;
   bottom: 2.5rem;
   padding: 0.8rem 1rem;
   transform: rotate(-3deg);
