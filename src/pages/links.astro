@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/portrait-square.jpg';
+import Layout from '../layouts/Layout.astro';
+
+const description =
+  'Find Rodrigo Yokota, Platform Engineer at Zephyr Cloud and The AI Platform, on GitHub, LinkedIn, X, email, and the web.';
+---
+
+<Layout title="Links | Rodrigo Yokota" description={description}>
+  <main class="link-page">
+    <a class="link-page__back" href="/">&larr; yokota.dev</a>
+    <section class="link-page__card" aria-labelledby="links-title">
+      <div class="link-page__portrait-wrap">
+        <Image
+          class="link-page__portrait"
+          src={portrait}
+          alt="Rodrigo Yokota"
+          width={160}
+          height={160}
+          format="webp"
+          quality={86}
+        />
+        <span class="link-page__status" aria-hidden="true"></span>
+      </div>
+      <p class="eyebrow">Platform Engineer / Brazil</p>
+      <h1 id="links-title">Rodrigo Yokota</h1>
+      <p class="link-page__intro">Building deployment rails, federated systems, and agent platforms at Zephyr Cloud.</p>
+      <nav class="link-stack" aria-label="Rodrigo Yokota's links">
+        <a href="https://github.com/ryok90" target="_blank" rel="noreferrer"><span>GitHub</span><small>Code and side quests</small><b aria-hidden="true">&nearr;</b></a>
+        <a href="https://www.linkedin.com/in/rodrigo-yokota/" target="_blank" rel="noreferrer"><span>LinkedIn</span><small>Work and experience</small><b aria-hidden="true">&nearr;</b></a>
+        <a href="mailto:rodrigo@yokota.dev"><span>Email</span><small>rodrigo@yokota.dev</small><b aria-hidden="true">&rarr;</b></a>
+        <a href="https://x.com/ryok90" target="_blank" rel="noreferrer"><span>X</span><small>Notes in public</small><b aria-hidden="true">&nearr;</b></a>
+        <a href="https://drive.google.com/uc?export=download&id=1Q_JRCt0mZmhP7ieBWEMdeMBt8gAwfTA8" target="_blank" rel="noreferrer"><span>Resume</span><small>Download the PDF</small><b aria-hidden="true">&darr;</b></a>
+        <a href="/rodrigo-yokota.vcf" download><span>Contact card</span><small>Save as vCard</small><b aria-hidden="true">&darr;</b></a>
+      </nav>
+    </section>
+  </main>
+</Layout>

@@ -8,8 +8,11 @@
 # testing
 /coverage
 
-# next.js
+# generated sites
 /.next/
+/dist/
+/.astro/
+/doc_build/
 /out/
 
 # production
@@ -34,3 +37,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local agent tooling
+/.serena/

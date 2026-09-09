@@ -1,0 +1,15 @@
+---
+import ArrowIcon from '../components/ArrowIcon.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 | Rodrigo Yokota" description="This route is not part of the current system.">
+  <main class="link-page">
+    <section class="link-page__card error-page" aria-labelledby="error-title">
+      <p class="eyebrow">Route status / 404</p>
+      <h1 id="error-title">Signal lost.</h1>
+      <p class="link-page__intro">This route is not part of the current system.</p>
+      <a class="button button--primary" href="/">Return to yokota.dev <ArrowIcon /></a>
+    </section>
+  </main>
+</Layout>
