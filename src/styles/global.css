@@ -575,6 +575,10 @@ svg {
   padding-right: 1.25rem;
 }
 
+.ticker__group span {
+  transform: translateY(2px);
+}
+
 .ticker__group i {
   width: 0.4rem;
   height: 0.4rem;
