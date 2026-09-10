@@ -12,6 +12,10 @@ const { title, description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 // Preview builds can reference a published card while production stays on its canonical domain.
 const socialImageUrl = new URL(import.meta.env.SOCIAL_IMAGE_URL ?? '/og-card.jpg', Astro.site);
+// Google Analytics 4, the only client script on the site. Zephyr version URLs are subdomains of
+// the apex (`<version>-...-ze.yokota.dev`) and render canonical yokota.dev markup, so the tag is
+// gated on an exact apex hostname match. Loosening that to a suffix test would track every build.
+const GA_MEASUREMENT_ID = 'G-EYT1QRFKV1';
 
 const personStructuredData = {
   '@context': 'https://schema.org',
@@ -87,6 +91,22 @@ const personStructuredData = {
     <meta name="twitter:image:alt" content="Rodrigo Yokota, Platform Engineer" />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personStructuredData)} />
+
+    <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+      if (location.hostname === 'yokota.dev') {
+        const tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+        document.head.append(tag);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', GA_MEASUREMENT_ID);
+      }
+    </script>
   </head>
   <body>
     <slot />

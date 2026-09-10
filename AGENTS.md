@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. It is a static Astro site with no client application bundle. The site presents Rodrigo as a Platform Engineer working across Zephyr Cloud and The AI Platform.
+This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. It is a static Astro site with no client application bundle; the only client script is the Google Analytics tag. The site presents Rodrigo as a Platform Engineer working across Zephyr Cloud and The AI Platform.
 
 ## Source Map
 
@@ -10,7 +10,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `src/pages/links.astro`: compact social and contact landing page.
 - `src/pages/rodrigo-yokota.vcf.ts`: prerendered vCard; the explicit CRLF output is required by the vCard format.
 - `src/pages/404.astro`: static not-found page.
-- `src/layouts/Layout.astro`: shared canonical, Open Graph, Twitter, favicon, font preload, and Person JSON-LD metadata.
+- `src/layouts/Layout.astro`: shared canonical, Open Graph, Twitter, favicon, font preload, Person JSON-LD metadata, and the Google Analytics tag.
 - `src/styles/global.css`: the complete design system and responsive layout.
 - `src/assets`: source portraits and local fonts processed by Astro.
 - `public`: direct-address assets such as favicons, `robots.txt`, and the social card.
@@ -18,7 +18,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 
 ## Architecture
 
-- Keep pages static and server-rendered by Astro. Add a client island only when a feature requires runtime interaction.
+- Keep pages static and server-rendered by Astro. Add a client island only when a feature requires runtime interaction. The analytics tag is the one sanctioned exception and stays an `is:inline` script so Astro never bundles it.
 - Keep shared metadata in `Layout.astro`; pass each page a specific title and description.
 - Keep content arrays close to the homepage markup in `index.astro`. This is a two-page portfolio, not a general content platform.
 - Use Astro's `Image` component for source images under `src/assets`; specify dimensions, format, quality, loading behavior, and responsive sizes.
@@ -55,6 +55,16 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `@astrojs/sitemap` generates `sitemap-index.xml` and `sitemap-0.xml`; `robots.txt` points to the index.
 - Zephyr's current static preview fallback serves the homepage with HTTP 200 for unknown paths instead of `404.html`. This is platform routing behavior, not an Astro page issue.
 
+## Analytics
+
+- Google Analytics 4 property `G-EYT1QRFKV1`, declared as `GA_MEASUREMENT_ID` in `Layout.astro`. It is the same property the pre-Astro site used; do not mint a new one.
+- The snippet loads `gtag/js` only when `location.hostname === 'yokota.dev'`. Every build renders canonical yokota.dev URLs in its markup, so the served hostname is the only signal that separates production traffic from builds.
+- The comparison MUST stay strict equality against the bare apex. Zephyr's edge domain for this app is `ze.yokota.dev`, and version URLs are single-label subdomains of the apex, shaped `<version>-<app>-<project>-<org>-<hash>-ze.yokota.dev`. A suffix test such as `endsWith('yokota.dev')` would match every version URL and send their traffic to the production property.
+- Consequence: local dev and Zephyr version URLs issue zero requests to `googletagmanager.com` and define no `dataLayer`. Verify analytics against `https://yokota.dev` itself, never a version URL.
+- No Zephyr environment or tag hostnames exist today (`ENVIRONMENTS` is empty). If one is promoted onto its own subdomain, it stays untracked until it is added to the guard deliberately.
+- The site is a static MPA, so gtag's automatic `page_view` on load is complete coverage. Do not add route-change tracking.
+- Keep the tag free of consent-gated features: no Google Signals, no Ads linking, no cross-domain measurement.
+
 ## Commands
 
 - Install dependencies: `pnpm install`
@@ -71,5 +81,5 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 2. A requested production build completes and returns a working Zephyr preview URL.
 3. Modified routes render without console warnings or horizontal overflow at 390px and 1440px.
 4. SEO edits are present in generated HTML and social image URLs return `200` with the expected MIME type and dimensions.
-5. Performance-sensitive changes retain zero client application JavaScript and should be checked with Lighthouse against the Zephyr preview.
+5. Performance-sensitive changes ship no client application JavaScript beyond the analytics tag and should be checked with Lighthouse against the Zephyr preview.
 6. `git diff --check` passes and the worktree contains only intended changes.
