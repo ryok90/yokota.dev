@@ -1,6 +1,6 @@
 # yokota.dev
 
-Rodrigo Yokota's portfolio, built as a zero-JavaScript Astro site and deployed by Zephyr Cloud.
+Rodrigo Yokota's portfolio, built as a static Astro site with no client framework bundle and deployed by Zephyr Cloud. The only client script is the Google Analytics tag, which loads solely on `yokota.dev`, so local and preview builds send no analytics traffic.
 
 ## Development
 
