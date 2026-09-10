@@ -1,0 +1,394 @@
+---
+import { Image } from 'astro:assets';
+import ArrowIcon from '../components/ArrowIcon.astro';
+import ExternalIcon from '../components/ExternalIcon.astro';
+import portraitLandscape from '../assets/portrait-landscape.jpg';
+import portraitSquare from '../assets/portrait-square.jpg';
+import Layout from '../layouts/Layout.astro';
+
+const RESUME_URL =
+  'https://drive.google.com/uc?export=download&id=1Q_JRCt0mZmhP7ieBWEMdeMBt8gAwfTA8';
+const description =
+  'Rodrigo Yokota is a Platform Engineer at Zephyr Cloud and The AI Platform, building deployment infrastructure, federated frontend tooling, and agent platforms.';
+
+const focusAreas = [
+  {
+    number: '01',
+    title: 'Federated delivery',
+    description:
+      'Turning independent frontend builds into predictable, observable releases across teams and environments.',
+    tags: ['Module Federation', 'Rspack', 'Webpack', 'Vite'],
+  },
+  {
+    number: '02',
+    title: 'Platform engineering',
+    description:
+      'Designing the paved roads, tooling, and deployment systems that let product teams move without waiting.',
+    tags: ['TypeScript', 'Node.js', 'AWS', 'CI/CD'],
+  },
+  {
+    number: '03',
+    title: 'Agent platforms',
+    description:
+      'Building infrastructure for specialists, model routing, human review, and repeatable AI-enabled workflows.',
+    tags: ['Agents', 'Tooling', 'Evaluation', 'Desktop'],
+  },
+];
+
+const tickerItems = [
+  'Module Federation',
+  'Build Tooling',
+  'Edge Delivery',
+  'Agent Platforms',
+  'Developer Experience',
+  'Artificial Intelligence',
+  'Micro Frontends',
+  'Cloud Integrations',
+];
+
+const experience = [
+  {
+    period: 'Nov 2023 - now',
+    company: 'Zephyr Cloud',
+    role: 'Platform Engineer',
+    description:
+      'Building the platform layer behind federated frontend delivery and agent-powered software across Zephyr Cloud and The AI Platform. I started through Valor Software and moved directly to Zephyr Cloud in Dec 2025.',
+    detail: 'Bundler integrations / cloud delivery / developer tooling / production systems',
+    href: 'https://zephyr-cloud.io',
+    current: true,
+  },
+  {
+    period: 'Nov 2023 - Nov 2025',
+    company: 'Valor Software',
+    role: 'Senior Software Engineer',
+    description:
+      'Valor Software was the consulting path that brought me into Zephyr Cloud. I contributed to deployment, visualization, and monitoring tooling for federated applications before moving directly to the product company.',
+    detail: 'Nx / Node.js / Next.js / NestJS / PostgreSQL / Module Federation',
+    href: 'https://valor-software.com',
+    current: false,
+  },
+  {
+    period: 'Mar 2023 - Oct 2023',
+    company: 'Vaullti',
+    role: 'Senior Software Engineer',
+    description:
+      'Architected the first application layers and automated infrastructure and deployment workflows for a cloud-native product.',
+    detail: 'Node.js / Serverless / React / DynamoDB / SQS / SNS / CloudFront',
+    href: 'https://www.linkedin.com/company/vaullti-inc/',
+    current: false,
+  },
+  {
+    period: 'Dec 2021 - Jan 2023',
+    company: 'Groundbreaker',
+    role: 'Senior Software Engineer',
+    description:
+      'Shipped product features, modernized legacy structures, and helped teams make sound cloud architecture and implementation decisions.',
+    detail: 'Node.js / Serverless / Nx / React / DynamoDB / Micro-frontends',
+    href: 'https://www.linkedin.com/company/groundbreakerco/',
+    current: false,
+  },
+  {
+    period: 'Sep 2020 - Nov 2021',
+    company: 'Gazin Tech',
+    role: 'Software Engineer',
+    description:
+      'Built e-commerce web and mobile experiences and led an integration service for shipping costs and delivery updates.',
+    detail: 'Node.js / NestJS / React / Next.js / PostgreSQL / Laravel',
+    href: 'https://www.linkedin.com/company/gazin-tech/',
+    current: false,
+  },
+  {
+    period: 'May 2019 - Sep 2020',
+    company: 'Vivaworks',
+    role: 'Full-stack Developer',
+    description:
+      'Developed and maintained a corporate intranet while helping start its next cross-platform mobile application.',
+    detail: 'PHP / Zend / Flutter / Docker / MySQL / JavaScript',
+    href: 'https://www.linkedin.com/company/vivaworks/',
+    current: false,
+  },
+];
+
+const projects = [
+  {
+    name: 'guaranate',
+    type: 'Swift / macOS',
+    description:
+      'A native keep-awake CLI that talks to IOKit directly. Named after guarana, because Brazil solves caffeine differently.',
+    href: 'https://github.com/ryok90/guaranate',
+    command: 'brew install ryok90/guaranate/guaranate',
+  },
+  {
+    name: 'Module Federation',
+    type: 'Open source / Contributor',
+    description:
+      'Contributing to the open-source ecosystem making independently built applications work together as one system.',
+    href: 'https://github.com/module-federation',
+    command: 'role: contributor',
+  },
+];
+---
+
+<Layout title="Rodrigo Yokota | Platform Engineer at Zephyr Cloud" description={description}>
+  <div class="portfolio">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="RY - Rodrigo Yokota, home">
+        <span class="wordmark__mark">RY</span>
+        <span class="wordmark__text">
+          Rodrigo Yokota
+          <small>Platform Engineer</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#experience">Timeline</a>
+        <a href="#projects">Side quests</a>
+      </nav>
+      <a class="header-link" href={RESUME_URL} target="_blank" rel="noreferrer">
+        Resume <ExternalIcon />
+      </a>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section-shell" id="top" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow">
+            <span class="signal-dot"></span>
+            Platform Engineer / Curitiba, Brazil / UTC-3
+          </p>
+          <h1 id="hero-title">
+            I build the rails
+            <span>software ships on.</span>
+          </h1>
+          <p class="hero__intro">
+            I work across build systems, cloud delivery, and developer experience at{' '}
+            <a href="https://zephyr-cloud.io" target="_blank" rel="noreferrer">Zephyr Cloud</a>, and{' '}
+            <a href="https://theaiplatform.app" target="_blank" rel="noreferrer">The AI Platform</a>. The goal is simple: make complex systems feel boring to operate.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#work">See what I build <ArrowIcon /></a>
+            <a class="button button--quiet" href="mailto:rodrigo@yokota.dev">Start a conversation</a>
+          </div>
+          <dl class="hero__facts">
+            <div><dt>Building since</dt><dd>2018</dd></div>
+            <div><dt>Working layer</dt><dd>Platform</dd></div>
+            <div><dt>Bias</dt><dd>Ship, observe, simplify</dd></div>
+          </dl>
+        </div>
+
+        <aside class="system-card" aria-label="Current platform engineering focus">
+          <div class="system-card__topline">
+            <span>current.system</span>
+            <span class="status-pill"><i></i> operational</span>
+          </div>
+          <div class="system-card__portrait">
+            <div>
+              <span>01 / operator</span>
+              <strong>Rodrigo<br />Yokota</strong>
+            </div>
+            <Image
+              src={portraitSquare}
+              alt="Rodrigo Yokota"
+              width={520}
+              height={520}
+              layout="constrained"
+              widths={[270, 400, 520]}
+              sizes="(max-width: 520px) 52vw, (max-width: 1040px) 55vw, 270px"
+              format="webp"
+              quality={80}
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="system-map" aria-hidden="true">
+            <div class="system-node system-node--source"><small>source</small><b>teams</b></div>
+            <span class="system-line"><i></i></span>
+            <div class="system-node system-node--build"><small>platform</small><b>build + ship</b></div>
+            <span class="system-line"><i></i></span>
+            <div class="system-node system-node--edge"><small>outcome</small><b>boring releases</b></div>
+          </div>
+          <p class="system-card__code"><span>motto</span>: <b>'Ship it, then make it boring.'</b></p>
+        </aside>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          {[0, 1].map(() => (
+            <div class="ticker__group">
+              {tickerItems.map((item) => <><span>{item}</span><i></i></>)}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <section class="focus section-shell" aria-labelledby="focus-title">
+        <div class="section-heading">
+          <p class="eyebrow">My working set</p>
+          <h2 id="focus-title">Systems over surfaces.</h2>
+          <p>I like the layer where architecture becomes an everyday developer experience.</p>
+        </div>
+        <div class="focus-grid">
+          {focusAreas.map((area) => (
+            <article class="focus-card">
+              <span class="focus-card__number">{area.number}</span>
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+              <ul aria-label={`${area.title} technologies`}>
+                {area.tags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="work section-shell" aria-labelledby="work-title">
+        <div class="section-index" aria-hidden="true">02</div>
+        <div class="section-heading section-heading--split" id="work">
+          <div>
+            <p class="eyebrow">Shipping now</p>
+            <h2 id="work-title">One role. Two platform problems.</h2>
+          </div>
+          <p>Platform Engineer at Zephyr Cloud, working across the delivery system and its agent-platform product line.</p>
+        </div>
+
+        <div class="product-grid">
+          <a class="product-card product-card--zephyr" href="https://zephyr-cloud.io" target="_blank" rel="noreferrer">
+            <div class="product-card__header">
+              <span class="product-card__monogram">ZC</span>
+              <span>01 / federated delivery</span>
+              <ExternalIcon />
+            </div>
+            <div class="product-card__body">
+              <p class="eyebrow">Zephyr Cloud</p>
+              <h3>Ship modular frontends without carrying the deployment machinery.</h3>
+              <p>Instant build capture, immutable versions, dependency resolution, and cloud-agnostic delivery for teams building with Module Federation.</p>
+            </div>
+            <ul>
+              <li>Bundler integrations</li>
+              <li>Deployment pipelines</li>
+              <li>Global edge delivery</li>
+            </ul>
+          </a>
+
+          <a class="product-card product-card--ai" href="https://theaiplatform.app" target="_blank" rel="noreferrer">
+            <div class="product-card__header">
+              <span class="product-card__monogram">AI</span>
+              <span>02 / agent operations</span>
+              <ExternalIcon />
+            </div>
+            <div class="product-card__body">
+              <p class="eyebrow">The AI Platform</p>
+              <h3>Give teams specialists, not another empty chat box.</h3>
+              <p>A multi-agent, multi-human workspace for model routing, reusable specialists, evidence-led review, and AI-enabled mini apps.</p>
+            </div>
+            <ul>
+              <li>Specialist agents</li>
+              <li>Human review</li>
+              <li>Repeatable workflows</li>
+            </ul>
+          </a>
+        </div>
+      </section>
+
+      <section class="experience section-shell" aria-labelledby="experience-title">
+        <div class="section-heading section-heading--split" id="experience">
+          <div>
+            <p class="eyebrow">Work experience</p>
+            <h2 id="experience-title">The route to platform.</h2>
+          </div>
+          <p>From full-stack product work to the infrastructure that lets many products ship.</p>
+        </div>
+
+        <ol class="timeline">
+          {experience.map((item) => (
+            <li class:list={['timeline__item', { 'timeline__item--current': item.current }]}>
+              <span class="timeline__period">{item.period}</span>
+              <div class="timeline__marker"><i></i></div>
+              <div class="timeline__content">
+                <div class="timeline__title">
+                  <div>
+                    <h3><a href={item.href} target="_blank" rel="noreferrer">{item.company}</a></h3>
+                    <p>{item.role}</p>
+                  </div>
+                  {item.current && <span class="current-label">current</span>}
+                </div>
+                <p>{item.description}</p>
+                <small>{item.detail}</small>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="projects section-shell" aria-labelledby="projects-title">
+        <div class="section-index section-index--right" aria-hidden="true">04</div>
+        <div class="section-heading section-heading--split" id="projects">
+          <div>
+            <p class="eyebrow">After-hours lab</p>
+            <h2 id="projects-title">Side quests with opinions.</h2>
+          </div>
+          <p>Small projects are where I test an idea until it becomes useful, or at least entertaining.</p>
+        </div>
+
+        <div class="project-list">
+          {projects.map((project, index) => (
+            <a class="project-row" href={project.href} target="_blank" rel="noreferrer">
+              <span class="project-row__number">0{index + 1}</span>
+              <div class="project-row__title">
+                <h3>{project.name}</h3>
+                <small>{project.type}</small>
+              </div>
+              <p>{project.description}</p>
+              <code>{project.command}</code>
+              <ExternalIcon />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="about section-shell" aria-labelledby="about-title">
+        <div class="about__portrait" aria-hidden="true">
+          <Image
+            src={portraitLandscape}
+            alt=""
+            width={900}
+            format="webp"
+            quality={82}
+            loading="lazy"
+          />
+          <span>FULL-STACK SINCE '18</span>
+        </div>
+        <div class="about__copy">
+          <p class="eyebrow">Operator notes</p>
+          <h2 id="about-title">The person behind the pipeline.</h2>
+          <p class="about__lead">I am a Brazilian engineer who likes difficult systems, direct communication, and tools that respect the people using them.</p>
+          <p>My path through mobile, commerce, SaaS, micro-frontends, and cloud infrastructure taught me to work across boundaries. I write mostly TypeScript, but I am also comfortable with Swift, Python, PHP, Dart, and a suspicious amount of YAML.</p>
+          <dl class="about__details">
+            <div><dt>Based</dt><dd>Curitiba, PR, Brazil</dd></div>
+            <div><dt>Certified</dt><dd>AWS Cloud Practitioner</dd></div>
+            <div><dt>Off-screen</dt><dd>Keyboards, board games, native tools</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="contact section-shell" aria-labelledby="contact-title">
+        <p class="eyebrow">Open channel</p>
+        <h2 id="contact-title">Have a hard platform problem?</h2>
+        <a class="contact__email" href="mailto:rodrigo@yokota.dev">rodrigo@yokota.dev <ArrowIcon /></a>
+        <nav class="contact__links" aria-label="Social links">
+          <a href="https://github.com/ryok90" target="_blank" rel="noreferrer">GitHub <ExternalIcon /></a>
+          <a href="https://www.linkedin.com/in/rodrigo-yokota/" target="_blank" rel="noreferrer">LinkedIn <ExternalIcon /></a>
+          <a href="https://x.com/ryok90" target="_blank" rel="noreferrer">X <ExternalIcon /></a>
+          <a href="/links/">All links <ArrowIcon /></a>
+        </nav>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <p>Designed as a control plane. Built with Astro. Deployed by Zephyr Cloud.</p>
+      <p>&copy; 2026 Rodrigo Yokota</p>
+    </footer>
+  </div>
+</Layout>

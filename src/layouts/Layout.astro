@@ -1,0 +1,94 @@
+---
+import electrolizeUrl from '../assets/fonts/Electrolize-Regular.woff2?url';
+import interUrl from '../assets/fonts/Inter-Regular.woff2?url';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+// Preview builds can reference a published card while production stays on its canonical domain.
+const socialImageUrl = new URL(import.meta.env.SOCIAL_IMAGE_URL ?? '/og-card.jpg', Astro.site);
+
+const personStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rodrigo Yokota',
+  url: 'https://yokota.dev',
+  image: socialImageUrl.href,
+  jobTitle: 'Platform Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Zephyr Cloud',
+    url: 'https://zephyr-cloud.io',
+  },
+  sameAs: [
+    'https://github.com/ryok90',
+    'https://www.linkedin.com/in/rodrigo-yokota/',
+    'https://x.com/ryok90',
+  ],
+  knowsAbout: [
+    'Platform engineering',
+    'Module Federation',
+    'Build tooling',
+    'Cloud deployment pipelines',
+    'Agent platforms',
+    'TypeScript',
+    'Node.js',
+    'Rspack',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Rodrigo Yokota" />
+    <meta
+      name="keywords"
+      content="Rodrigo Yokota, platform engineer, Zephyr Cloud, The AI Platform, Module Federation, Rspack, build tooling, cloud deployments, TypeScript"
+    />
+    <meta name="theme-color" content="#090b0d" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="icon" href="/images/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="preload" href={electrolizeUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={interUrl} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rodrigo Yokota" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content="Rodrigo Yokota, Platform Engineer" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@ryok90" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content="Rodrigo Yokota, Platform Engineer" />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personStructuredData)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
