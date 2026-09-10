@@ -13,7 +13,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `src/layouts/Layout.astro`: shared canonical, Open Graph, Twitter, favicon, font preload, Person JSON-LD metadata, and the Google Analytics tag.
 - `src/styles/global.css`: the complete design system and responsive layout.
 - `src/assets`: source portraits and local fonts processed by Astro.
-- `public`: direct-address assets such as favicons, `robots.txt`, and the social card.
+- `public`: direct-address assets such as favicons, `robots.txt`, `llms.txt`, and the social card.
 - `astro.config.mjs`: static output, sitemap generation, inlined CSS, responsive image styles, and Zephyr deployment.
 
 ## Architecture
@@ -53,6 +53,8 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - Keep the social card at 1200x630, JPEG, and approximately 100 KB or less. It should combine Rodrigo's portrait with the site's current visual language.
 - `favicon.svg` is the canonical icon source. Regenerate the ICO, 16px PNG, 32px PNG, and 180px Apple touch icon whenever the SVG changes.
 - `@astrojs/sitemap` generates `sitemap-index.xml` and `sitemap-0.xml`; `robots.txt` points to the index.
+- `llms.txt` is the machine-readable summary for LLM crawlers. It restates the content invariants above, so update it whenever a role, project, or profile URL changes.
+- Every portrait carries a descriptive alt attribute. The about-section portrait is content, not decoration: the wrapper is not `aria-hidden`, and only the `FULL-STACK SINCE '18` badge is hidden from assistive technology.
 - Zephyr's current static preview fallback serves the homepage with HTTP 200 for unknown paths instead of `404.html`. This is platform routing behavior, not an Astro page issue.
 
 ## Analytics
