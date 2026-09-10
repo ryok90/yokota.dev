@@ -1,0 +1,42 @@
+# Rodrigo Yokota
+
+> Platform Engineer based in Curitiba, PR, Brazil, working across Zephyr Cloud and
+> The AI Platform. Builds deployment infrastructure, federated frontend tooling, and
+> agent platforms. Writes mostly TypeScript, plus Swift, Python, PHP, and Dart.
+
+- Site: https://yokota.dev
+- Contact: rodrigo@yokota.dev
+- Location: Curitiba, PR, Brazil (UTC-3)
+- Certification: AWS Certified Cloud Practitioner
+
+## Pages
+
+- [Home](https://yokota.dev/): focus areas, current work, career timeline, side projects, and contact channels.
+- [Links](https://yokota.dev/links/): compact index of profiles, resume, and contact card.
+- [Contact card](https://yokota.dev/rodrigo-yokota.vcf): vCard with name, role, email, and site.
+
+## Current work
+
+- Platform Engineer at [Zephyr Cloud](https://zephyr-cloud.io) since November 2023, first
+  through Valor Software and directly employed since December 2025. Bundler integrations,
+  deployment pipelines, and global edge delivery for teams building with Module Federation.
+- Platform work on [The AI Platform](https://theaiplatform.app): a multi-agent, multi-human
+  workspace covering model routing, reusable specialists, evidence-led review, and
+  AI-enabled mini apps.
+
+## Focus areas
+
+- Federated delivery: Module Federation, Rspack, Webpack, Vite.
+- Platform engineering: TypeScript, Node.js, AWS, CI/CD.
+- Agent platforms: agent tooling, evaluation, desktop clients.
+
+## Open source
+
+- [guaranate](https://github.com/ryok90/guaranate): native Swift/macOS keep-awake CLI built on IOKit.
+- [Module Federation](https://github.com/module-federation): contributor.
+
+## Profiles
+
+- [GitHub](https://github.com/ryok90)
+- [LinkedIn](https://www.linkedin.com/in/rodrigo-yokota/)
+- [X](https://x.com/ryok90)
