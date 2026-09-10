@@ -13,7 +13,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `src/layouts/Layout.astro`: shared canonical, Open Graph, Twitter, favicon, font preload, Person JSON-LD metadata, and the Google Analytics tag.
 - `src/styles/global.css`: the complete design system and responsive layout.
 - `src/assets`: source portraits and local fonts processed by Astro.
-- `public`: direct-address assets such as favicons, `robots.txt`, `llms.txt`, and the social card.
+- `public`: direct-address assets such as favicons, the web app manifest, `robots.txt`, `llms.txt`, the legacy `sitemap.xml` alias, the legacy `api/contact/index.html` redirect stub, and the social card.
 - `astro.config.mjs`: static output, sitemap generation, inlined CSS, responsive image styles, and Zephyr deployment.
 
 ## Architecture
@@ -51,11 +51,14 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - Set `SOCIAL_IMAGE_URL` to an absolute, already-published image when creating a shareable Zephyr preview.
 - A shareable preview requires two builds when the card changed: publish the card first, then build again with `SOCIAL_IMAGE_URL` pointing to the first immutable Zephyr deployment.
 - Keep the social card at 1200x630, JPEG, and approximately 100 KB or less. It should combine Rodrigo's portrait with the site's current visual language.
-- `favicon.svg` is the canonical icon source. Regenerate the ICO, 16px PNG, 32px PNG, and 180px Apple touch icon whenever the SVG changes.
-- `@astrojs/sitemap` generates `sitemap-index.xml` and `sitemap-0.xml`; `robots.txt` points to the index.
+- `favicon.svg` is the canonical icon source. Regenerate the ICO, 16px PNG, 32px PNG, 180px Apple touch icon, and the 192px, 512px, and 512px maskable manifest icons whenever the SVG changes. The maskable icon renders the artwork at 410px centered on a `#090b0d` 512px canvas so the corner brackets survive Android's circular crop.
+- `site.webmanifest` exists for Android install and home-screen icons only. There is no service worker and no offline story; do not add one.
+- `@astrojs/sitemap` generates `sitemap-index.xml` and `sitemap-0.xml`; `robots.txt` points to the index. `public/sitemap.xml` is a hand-written index that keeps the pre-Astro sitemap URL resolving, and it references `sitemap-0.xml` because a sitemap index may not point at another index.
 - `llms.txt` is the machine-readable summary for LLM crawlers. It restates the content invariants above, so update it whenever a role, project, or profile URL changes.
 - Every portrait carries a descriptive alt attribute. The about-section portrait is content, not decoration: the wrapper is not `aria-hidden`, and only the `FULL-STACK SINCE '18` badge is hidden from assistive technology.
 - Zephyr's current static preview fallback serves the homepage with HTTP 200 for unknown paths instead of `404.html`. This is platform routing behavior, not an Astro page issue.
+- Legacy URLs from the pre-Astro site: `/api/contact` served the vCard and now redirects to `/rodrigo-yokota.vcf` through the static stub in `public/api/contact/index.html`. Do NOT move this into the `redirects` config: `trailingSlash: 'always'` rewrites the destination to `/rodrigo-yokota.vcf/`, which Zephyr answers with the homepage. `/images/rodrigo-yokota.webp` was the old `og:image` and is intentionally gone; social scrapers refresh their caches.
+- Static prerendering discards the `Content-Type` and `Content-Disposition` headers set in `rodrigo-yokota.vcf.ts`, and Zephyr serves the file as `application/octet-stream` with `nosniff`. Browsers still save it by extension. Fixing this needs a MIME mapping on the host, not a repository change.
 
 ## Analytics
 

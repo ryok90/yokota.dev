@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Legacy alias. The pre-Astro site published its sitemap at /sitemap.xml, and that URL is
+  still what old crawler state and Search Console submissions point at. @astrojs/sitemap
+  owns /sitemap-index.xml and /sitemap-0.xml, so this file keeps the old path resolving by
+  indexing the generated URL set. A sitemap index may not reference another index, so it
+  points at sitemap-0.xml directly; revisit if the site ever needs a second sitemap file.
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://yokota.dev/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>
