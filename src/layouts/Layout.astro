@@ -6,14 +6,24 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  /** Keep a 200-status error document out of the index. */
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 // Preview builds can reference a published card while production stays on its canonical domain.
 const socialImageUrl = new URL(import.meta.env.SOCIAL_IMAGE_URL ?? '/og-card.jpg', Astro.site);
-// Google Analytics 4, the only client script on the site. Zephyr version URLs are subdomains of
-// the apex (`<version>-...-ze.yokota.dev`) and render canonical yokota.dev markup, so the tag is
+// Zephyr's static hosting answers unknown paths with the homepage document instead of 404.html,
+// so the document served at `/` is also the catch-all. Only that document carries the route
+// guard below; every real route is served from its own file and can never be a fallback hit.
+const isFallbackDocument = Astro.url.pathname === '/';
+// It runs before anything paints, so a fallback hit never flashes the homepage. The document
+// keeps the platform's 200 status, which is why 404.astro also sends `noindex`.
+const routeGuard =
+  "if (location.pathname !== '/' && location.pathname !== '/index.html') location.replace('/404.html');";
+// Google Analytics 4. Zephyr version URLs are subdomains of the apex
+// (`<version>-...-ze.yokota.dev`) and render canonical yokota.dev markup, so the tag is
 // gated on an exact apex hostname match. Loosening that to a suffix test would track every build.
 const GA_MEASUREMENT_ID = 'G-EYT1QRFKV1';
 
@@ -57,6 +67,7 @@ const personStructuredData = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    {isFallbackDocument && <script is:inline set:html={routeGuard} />}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -67,6 +78,7 @@ const personStructuredData = {
       content="Rodrigo Yokota, platform engineer, Zephyr Cloud, The AI Platform, Module Federation, Rspack, build tooling, cloud deployments, TypeScript"
     />
     <meta name="theme-color" content="#090b0d" />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -75,6 +87,7 @@ const personStructuredData = {
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preload" href={electrolizeUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={interUrl} as="font" type="font/woff2" crossorigin />
 
