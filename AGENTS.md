@@ -43,6 +43,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - The ticker label `translateY(2px)` is an optical correction for Electrolize's font metrics. The diamond separators are geometrically centered.
 - The portrait badge deliberately uses `right: -0.40rem` and a slight rotation.
 - The favicon monogram is Arial Bold at `font-size="34"` with default letter spacing. The `R` and `Y` must stay visually separated: negative letter spacing closes the counter between the bowl of the `R` and the left arm of the `Y`, and it merges into a blob at 16px.
+- The header wordmark badge carries `letter-spacing: 0.1em` with a matching `text-indent`, for the same reason: Electrolize sets `RY` almost touching, and the indent cancels the trailing letter-space so the pair stays optically centered in the rotated square.
 - Preserve visible focus states, semantic landmarks, reduced-motion behavior, sufficient contrast, and explicit accessible names.
 
 ## Social And SEO

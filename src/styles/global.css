@@ -161,7 +161,10 @@ svg {
   border: 1px solid var(--signal);
   color: var(--signal);
   font: 700 0.85rem/1 var(--mono);
-  letter-spacing: -0.06em;
+  /* Electrolize sets R and Y almost touching; the indent offsets the trailing letter-space
+     so the pair stays optically centered inside the rotated square. */
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
   transform: rotate(-4deg);
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
