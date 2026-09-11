@@ -564,7 +564,7 @@ svg {
   display: flex;
   width: max-content;
   padding-block: 0.8rem;
-  animation: ticker 40s linear infinite;
+  animation: ticker calc(40s * var(--ticker-repeats, 1)) linear infinite;
   font: 700 0.68rem/1 var(--mono);
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -574,6 +574,8 @@ svg {
   display: flex;
   flex: none;
   align-items: center;
+  /* tickerRow already overflows 100vw, so these only take effect on a viewport
+     wider than one group, where spread beats a blank strip. */
   justify-content: space-around;
   min-width: 100vw;
   gap: 1.25rem;

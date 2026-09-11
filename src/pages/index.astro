@@ -46,6 +46,12 @@ const tickerItems = [
   'Cloud Integrations',
 ];
 
+// One pass of tickerItems is intrinsically ~1400px wide. Repeating it keeps a
+// group wider than any real viewport, so the fixed gap in .ticker__group governs
+// the spacing instead of leftover space being spread between the items.
+const tickerRepeats = 6;
+const tickerRow = Array.from({ length: tickerRepeats }, () => tickerItems).flat();
+
 const experience = [
   {
     period: 'Nov 2023 - now',
@@ -213,11 +219,11 @@ const projects = [
         </aside>
       </section>
 
-      <div class="ticker" aria-hidden="true">
+      <div class="ticker" aria-hidden="true" style={`--ticker-repeats: ${tickerRepeats}`}>
         <div class="ticker__track">
           {[0, 1].map(() => (
             <div class="ticker__group">
-              {tickerItems.map((item) => <><span>{item}</span><i></i></>)}
+              {tickerRow.map((item) => <><span>{item}</span><i></i></>)}
             </div>
           ))}
         </div>
