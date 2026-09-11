@@ -39,7 +39,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - Electrolize is the uppercase display/technical face; Inter is the body face.
 - The main responsive breakpoints are 1040px, 780px, and 520px. Verify both 390px mobile and 1440px desktop after visual edits.
 - Anchor IDs belong on visible heading blocks, not padded section boundaries. This keeps linked headings near the viewport top.
-- The technology ticker renders two identical groups from `tickerItems`. Each group stays at least `100vw`; the track translates by `-50%` for a seamless loop.
+- The technology ticker renders two identical groups, each repeating `tickerItems` `tickerRepeats` times. One pass is intrinsically about 1400px wide, so six passes keep a group wider than any real viewport and the fixed `1.25rem` gap sets the spacing at every width; `min-width: 100vw` and `justify-content: space-around` survive only as the degradation past roughly 8400px, where spreading beats a blank strip. The track translates by `-50%` for a seamless loop, and its duration is `calc(40s * var(--ticker-repeats))`, which holds the scroll at about 35px/s instead of letting it accelerate with the viewport.
 - The ticker label `translateY(2px)` is an optical correction for Electrolize's font metrics. The diamond separators are geometrically centered.
 - The portrait badge deliberately uses `right: -0.40rem` and a slight rotation.
 - The favicon monogram is Arial Bold at `font-size="34"` with default letter spacing. The `R` and `Y` must stay visually separated: negative letter spacing closes the counter between the bowl of the `R` and the left arm of the `Y`, and it merges into a blob at 16px.
