@@ -18,7 +18,7 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 
 ## Architecture
 
-- Keep pages static and server-rendered by Astro. Add a client island only when a feature requires runtime interaction. The analytics tag is the one sanctioned exception and stays an `is:inline` script so Astro never bundles it.
+- Keep pages static and server-rendered by Astro. Add a client island only when a feature requires runtime interaction. Exactly two `is:inline` scripts are sanctioned, both in `Layout.astro`: the analytics tag and the route guard. Neither is ever bundled.
 - Keep shared metadata in `Layout.astro`; pass each page a specific title and description.
 - Keep content arrays close to the homepage markup in `index.astro`. This is a two-page portfolio, not a general content platform.
 - Use Astro's `Image` component for source images under `src/assets`; specify dimensions, format, quality, loading behavior, and responsive sizes.
@@ -56,9 +56,9 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `@astrojs/sitemap` generates `sitemap-index.xml` and `sitemap-0.xml`; `robots.txt` points to the index. `public/sitemap.xml` is a hand-written index that keeps the pre-Astro sitemap URL resolving, and it references `sitemap-0.xml` because a sitemap index may not point at another index.
 - `llms.txt` is the machine-readable summary for LLM crawlers. It restates the content invariants above, so update it whenever a role, project, or profile URL changes.
 - Every portrait carries a descriptive alt attribute. The about-section portrait is content, not decoration: the wrapper is not `aria-hidden`, and only the `FULL-STACK SINCE '18` badge is hidden from assistive technology.
-- Zephyr's current static preview fallback serves the homepage with HTTP 200 for unknown paths instead of `404.html`. This is platform routing behavior, not an Astro page issue.
+- Zephyr's static hosting serves the homepage document with HTTP 200 for unknown paths instead of `404.html`, and a static site cannot answer with a 404 status. The `routeGuard` script in `Layout.astro` closes the gap: it ships only in the document built at `/`, and on a fallback hit it calls `location.replace('/404.html')` before anything paints. Every real route is served from its own file, so no legitimate URL can trip it. The status code stays 200, so `404.astro` passes `noindex` to keep the soft 404 out of the index. Note that `/rodrigo-yokota.vcf/` now resolves to the 404 page; `/rodrigo-yokota.vcf`, without the trailing slash, is the real asset.
 - Legacy URLs from the pre-Astro site: `/api/contact` served the vCard and now redirects to `/rodrigo-yokota.vcf` through the static stub in `public/api/contact/index.html`. Do NOT move this into the `redirects` config: `trailingSlash: 'always'` rewrites the destination to `/rodrigo-yokota.vcf/`, which Zephyr answers with the homepage. `/images/rodrigo-yokota.webp` was the old `og:image` and is intentionally gone; social scrapers refresh their caches.
-- Static prerendering discards the `Content-Type` and `Content-Disposition` headers set in `rodrigo-yokota.vcf.ts`, and Zephyr serves the file as `application/octet-stream` with `nosniff`. Browsers still save it by extension. Fixing this needs a MIME mapping on the host, not a repository change.
+- Static prerendering discards the `Content-Type` and `Content-Disposition` headers set in `rodrigo-yokota.vcf.ts`, and Zephyr serves the file as `application/octet-stream` with `nosniff`. Browsers still save it by extension. Fixing this needs a MIME mapping on the host, not a repository change; tracked as ZephyrCloudIO/zephyr-cloud-io#3732.
 
 ## Analytics
 
