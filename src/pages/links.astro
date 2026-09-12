@@ -2,12 +2,23 @@
 import { Image } from 'astro:assets';
 import portrait from '../assets/portrait-square.jpg';
 import Layout from '../layouts/Layout.astro';
+import { SITE_URL } from '../lib/schema';
 
 const description =
   'Find Rodrigo Yokota, Platform Engineer at Zephyr Cloud and The AI Platform, on GitHub, LinkedIn, X, email, and the web.';
+
+// The current page carries no `item`, per Google's breadcrumb guidance.
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': `${SITE_URL}/links/#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Links' },
+  ],
+};
 ---
 
-<Layout title="Links | Rodrigo Yokota" description={description}>
+<Layout title="Links | Rodrigo Yokota" description={description} schemaNodes={[breadcrumbSchema]}>
   <main class="link-page">
     <a class="link-page__back" href="/">&larr; yokota.dev</a>
     <section class="link-page__card" aria-labelledby="links-title">

@@ -3,6 +3,7 @@ import electrolizeUrl from '../assets/fonts/Electrolize-Regular.woff2?url';
 import interUrl from '../assets/fonts/Inter-Regular.woff2?url';
 import portraitSquare from '../assets/portrait-square.jpg';
 import { lastModified } from '../lib/last-modified.mjs';
+import { HOME_PAGE_ID, PERSON_ID, SITE_URL, WEBSITE_ID } from '../lib/schema';
 import '../styles/global.css';
 
 interface Props {
@@ -10,11 +11,22 @@ interface Props {
   description: string;
   /** The homepage is the canonical profile of the person; every other route is a WebPage. */
   pageType?: 'WebPage' | 'ProfilePage';
+  /**
+   * Page-specific graph nodes, built by the page from its own content arrays so the data has
+   * exactly one home. A `BreadcrumbList` among them is linked from the page node.
+   */
+  schemaNodes?: Record<string, unknown>[];
   /** Keep a 200-status error document out of the index. */
   noindex?: boolean;
 }
 
-const { title, description, pageType = 'WebPage', noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  pageType = 'WebPage',
+  schemaNodes = [],
+  noindex = false,
+} = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 // Preview builds can reference a published card while production stays on its canonical domain.
 const socialImageUrl = new URL(import.meta.env.SOCIAL_IMAGE_URL ?? '/og-card.jpg', Astro.site);
@@ -31,10 +43,6 @@ const routeGuard =
 // gated on an exact apex hostname match. Loosening that to a suffix test would track every build.
 const GA_MEASUREMENT_ID = 'G-EYT1QRFKV1';
 
-const SITE_URL = 'https://yokota.dev';
-const PERSON_ID = `${SITE_URL}/#person`;
-const WEBSITE_ID = `${SITE_URL}/#website`;
-const HOME_PAGE_ID = `${SITE_URL}/#webpage`;
 const SITE_DESCRIPTION =
   'Portfolio of Rodrigo Yokota, a Platform Engineer building deployment infrastructure, federated frontend tooling, and agent platforms.';
 // The portrait, not the social card: a 1200x630 card with type on it is a poor entity image.
@@ -63,10 +71,16 @@ const person = {
     height: portraitSquare.height,
     caption: 'Rodrigo Yokota, Platform Engineer',
   },
+  // The role wrapper carries the start date the homepage timeline already states.
   worksFor: {
-    '@type': 'Organization',
-    name: 'Zephyr Cloud',
-    url: 'https://zephyr-cloud.io',
+    '@type': 'OrganizationRole',
+    roleName: 'Platform Engineer',
+    startDate: '2023-11',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Zephyr Cloud',
+      url: 'https://zephyr-cloud.io',
+    },
   },
   hasOccupation: {
     '@type': 'Occupation',
@@ -124,6 +138,8 @@ const website = {
   publisher: { '@id': PERSON_ID },
 };
 
+const breadcrumb = schemaNodes.find((node) => node['@type'] === 'BreadcrumbList');
+
 const webPage = {
   '@type': pageType,
   '@id': `${canonicalUrl.href}#webpage`,
@@ -136,12 +152,13 @@ const webPage = {
   ...(pageType === 'ProfilePage'
     ? { mainEntity: { '@id': PERSON_ID } }
     : { about: { '@id': PERSON_ID } }),
+  ...(breadcrumb ? { breadcrumb: { '@id': breadcrumb['@id'] } } : {}),
   ...(modifiedAt ? { dateModified: modifiedAt.toISOString() } : {}),
 };
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@graph': [person, website, webPage],
+  '@graph': [person, website, webPage, ...schemaNodes],
 };
 ---
 
@@ -155,10 +172,6 @@ const structuredData = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Rodrigo Yokota" />
-    <meta
-      name="keywords"
-      content="Rodrigo Yokota, platform engineer, Zephyr Cloud, The AI Platform, Module Federation, Rspack, build tooling, cloud deployments, TypeScript"
-    />
     <meta name="theme-color" content="#090b0d" />
     {noindex && <meta name="robots" content="noindex" />}
 

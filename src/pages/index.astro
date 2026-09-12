@@ -5,6 +5,7 @@ import ExternalIcon from '../components/ExternalIcon.astro';
 import portraitLandscape from '../assets/portrait-landscape.jpg';
 import portraitSquare from '../assets/portrait-square.jpg';
 import Layout from '../layouts/Layout.astro';
+import { PERSON_ID } from '../lib/schema';
 
 const RESUME_URL =
   'https://drive.google.com/uc?export=download&id=1Q_JRCt0mZmhP7ieBWEMdeMBt8gAwfTA8';
@@ -133,12 +134,38 @@ const projects = [
     command: 'role: contributor',
   },
 ];
+
+// Project entities, derived from the array above so the copy stays the single source. The
+// repository URL is each project's `@id`: that is where the code actually lives, and it keeps
+// site-scoped identifiers for things this site owns. Authorship is deliberately precise -
+// guaranate is Rodrigo's, Module Federation is an ecosystem he contributes to.
+const projectSchema = [
+  {
+    '@type': 'SoftwareSourceCode',
+    '@id': projects[0].href,
+    name: projects[0].name,
+    description: projects[0].description,
+    codeRepository: projects[0].href,
+    programmingLanguage: 'Swift',
+    runtimePlatform: 'macOS',
+    author: { '@id': PERSON_ID },
+  },
+  {
+    '@type': 'SoftwareSourceCode',
+    '@id': projects[1].href,
+    name: projects[1].name,
+    description: projects[1].description,
+    codeRepository: projects[1].href,
+    contributor: { '@id': PERSON_ID },
+  },
+];
 ---
 
 <Layout
   title="Rodrigo Yokota | Platform Engineer at Zephyr Cloud"
   description={description}
   pageType="ProfilePage"
+  schemaNodes={projectSchema}
 >
   <div class="portfolio">
     <a class="skip-link" href="#main-content">Skip to content</a>
