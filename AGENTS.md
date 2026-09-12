@@ -10,11 +10,12 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `src/pages/links.astro`: compact social and contact landing page.
 - `src/pages/rodrigo-yokota.vcf.ts`: prerendered vCard; the explicit CRLF output is required by the vCard format.
 - `src/pages/404.astro`: static not-found page.
-- `src/layouts/Layout.astro`: shared canonical, Open Graph, Twitter, favicon, font preload, Person JSON-LD metadata, and the Google Analytics tag.
+- `src/layouts/Layout.astro`: shared canonical, Open Graph, Twitter, favicon, font preload, the JSON-LD entity graph, and the Google Analytics tag.
 - `src/styles/global.css`: the complete design system and responsive layout.
 - `src/assets`: source portraits and local fonts processed by Astro.
+- `src/lib/last-modified.mjs`: git-derived `lastmod` / `dateModified` dates, imported by both `astro.config.mjs` and `Layout.astro`.
 - `public`: direct-address assets such as favicons, the web app manifest, `robots.txt`, `llms.txt`, the legacy `sitemap.xml` alias, the legacy `api/contact/index.html` redirect stub, and the social card.
-- `astro.config.mjs`: static output, sitemap generation, inlined CSS, responsive image styles, and Zephyr deployment.
+- `astro.config.mjs`: static output, sitemap generation with git-derived `lastmod`, inlined CSS, responsive image styles, and Zephyr deployment.
 
 ## Architecture
 
@@ -56,6 +57,10 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 - `favicon.svg` is the canonical icon source. Regenerate the ICO, 16px PNG, 32px PNG, 180px Apple touch icon, and the 192px, 512px, and 512px maskable manifest icons whenever the SVG changes. The maskable icon renders the artwork at 410px centered on a `#090b0d` 512px canvas so the corner brackets survive Android's circular crop.
 - `site.webmanifest` exists for Android install and home-screen icons only. There is no service worker and no offline story; do not add one.
 - `@astrojs/sitemap` generates `sitemap-index.xml` and `sitemap-0.xml`; `robots.txt` points to the index. `public/sitemap.xml` is a hand-written index that keeps the pre-Astro sitemap URL resolving, and it references `sitemap-0.xml` because a sitemap index may not point at another index.
+- Sitemap entries carry `lastmod` and nothing else. Google and Bing both ignore `changefreq` and `priority`, so they are deliberately absent, and every optional namespace is off because no entry uses one.
+- `lastModified()` in `src/lib/last-modified.mjs` takes the newest commit date among the page source, `Layout.astro`, and `global.css`, resolved from `process.cwd()`. Git history is the source of truth on purpose: file mtimes are rewritten by any fresh clone, which would claim every page changed on every build. Uncommitted edits therefore do not move the date, and a build without git history omits it rather than inventing one. A page whose source file cannot be found still gets the shared-source date.
+- The JSON-LD is one `@graph` per document: the `Person` at `https://yokota.dev/#person`, the `WebSite` at `#website`, and a page node at `<canonical>#webpage`. Keep the `@id` values stable; they are how crawlers and answer engines join the entity across routes. The homepage is the `ProfilePage` and references the person as `mainEntity`; every other route is a `WebPage` and only `about` them. The page node carries `dateModified` from the same git helper that feeds the sitemap.
+- `Person.image` is the source portrait under `src/assets`, not `og-card.jpg`. Referencing `portraitSquare.src` emits the original JPEG into the build as a crawlable entity image; it is never fetched by a visitor. The social card stays a card: 1200x630 with type on it is a poor entity image.
 - `llms.txt` is the machine-readable summary for LLM crawlers. It restates the content invariants above, so update it whenever a role, project, or profile URL changes.
 - Every portrait carries a descriptive alt attribute. The about-section portrait is content, not decoration: the wrapper is not `aria-hidden`, and only the `FULL-STACK SINCE '18` badge is hidden from assistive technology.
 - Zephyr's static hosting serves the homepage document with HTTP 200 for unknown paths instead of `404.html`, and a static site cannot answer with a 404 status. The `routeGuard` script in `Layout.astro` closes the gap: it ships only in the document built at `/`, and on a fallback hit it calls `location.replace('/404.html')` before anything paints. Every real route is served from its own file, so no legitimate URL can trip it. The status code stays 200, so `404.astro` passes `noindex` to keep the soft 404 out of the index. Note that `/rodrigo-yokota.vcf/` now resolves to the 404 page; `/rodrigo-yokota.vcf`, without the trailing slash, is the real asset.

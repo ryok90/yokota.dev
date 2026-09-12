@@ -1,16 +1,20 @@
 ---
 import electrolizeUrl from '../assets/fonts/Electrolize-Regular.woff2?url';
 import interUrl from '../assets/fonts/Inter-Regular.woff2?url';
+import portraitSquare from '../assets/portrait-square.jpg';
+import { lastModified } from '../lib/last-modified.mjs';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description: string;
+  /** The homepage is the canonical profile of the person; every other route is a WebPage. */
+  pageType?: 'WebPage' | 'ProfilePage';
   /** Keep a 200-status error document out of the index. */
   noindex?: boolean;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, pageType = 'WebPage', noindex = false } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 // Preview builds can reference a published card while production stays on its canonical domain.
 const socialImageUrl = new URL(import.meta.env.SOCIAL_IMAGE_URL ?? '/og-card.jpg', Astro.site);
@@ -27,18 +31,65 @@ const routeGuard =
 // gated on an exact apex hostname match. Loosening that to a suffix test would track every build.
 const GA_MEASUREMENT_ID = 'G-EYT1QRFKV1';
 
-const personStructuredData = {
-  '@context': 'https://schema.org',
+const SITE_URL = 'https://yokota.dev';
+const PERSON_ID = `${SITE_URL}/#person`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const HOME_PAGE_ID = `${SITE_URL}/#webpage`;
+const SITE_DESCRIPTION =
+  'Portfolio of Rodrigo Yokota, a Platform Engineer building deployment infrastructure, federated frontend tooling, and agent platforms.';
+// The portrait, not the social card: a 1200x630 card with type on it is a poor entity image.
+const portraitUrl = new URL(portraitSquare.src, Astro.site).href;
+// Git-derived, so a rebuild with no content change does not claim a new modification date.
+const modifiedAt = lastModified(Astro.url.pathname);
+
+// One linked graph instead of an isolated Person on every page: crawlers and answer engines
+// resolve `@id` references, so each document points at the same person and site entity.
+const person = {
   '@type': 'Person',
+  '@id': PERSON_ID,
   name: 'Rodrigo Yokota',
-  url: 'https://yokota.dev',
-  image: socialImageUrl.href,
+  alternateName: 'ryok90',
+  url: `${SITE_URL}/`,
+  mainEntityOfPage: { '@id': HOME_PAGE_ID },
+  description:
+    'Platform Engineer working across build systems, cloud delivery, and developer experience.',
   jobTitle: 'Platform Engineer',
+  email: 'rodrigo@yokota.dev',
+  image: {
+    '@type': 'ImageObject',
+    url: portraitUrl,
+    contentUrl: portraitUrl,
+    width: portraitSquare.width,
+    height: portraitSquare.height,
+    caption: 'Rodrigo Yokota, Platform Engineer',
+  },
   worksFor: {
     '@type': 'Organization',
     name: 'Zephyr Cloud',
     url: 'https://zephyr-cloud.io',
   },
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Platform Engineer',
+    // O*NET-SOC code for software developers, the identifier schema.org's own examples use.
+    occupationalCategory: '15-1252.00',
+    skills: 'Module Federation, build tooling, deployment pipelines, TypeScript, Node.js, AWS',
+  },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    name: 'AWS Certified Cloud Practitioner',
+    credentialCategory: 'certification',
+    recognizedBy: {
+      '@type': 'Organization',
+      name: 'Amazon Web Services',
+      url: 'https://aws.amazon.com',
+    },
+  },
+  knowsLanguage: [
+    { '@type': 'Language', name: 'Portuguese', alternateName: 'pt-BR' },
+    { '@type': 'Language', name: 'English', alternateName: 'en' },
+  ],
+  nationality: { '@type': 'Country', name: 'Brazil' },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Curitiba',
@@ -60,6 +111,37 @@ const personStructuredData = {
     'Node.js',
     'Rspack',
   ],
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  url: `${SITE_URL}/`,
+  name: 'Rodrigo Yokota',
+  alternateName: 'yokota.dev',
+  description: SITE_DESCRIPTION,
+  inLanguage: 'en',
+  publisher: { '@id': PERSON_ID },
+};
+
+const webPage = {
+  '@type': pageType,
+  '@id': `${canonicalUrl.href}#webpage`,
+  url: canonicalUrl.href,
+  name: title,
+  description,
+  inLanguage: 'en',
+  isPartOf: { '@id': WEBSITE_ID },
+  // ProfilePage requires the profiled entity as `mainEntity`; other routes are only about it.
+  ...(pageType === 'ProfilePage'
+    ? { mainEntity: { '@id': PERSON_ID } }
+    : { about: { '@id': PERSON_ID } }),
+  ...(modifiedAt ? { dateModified: modifiedAt.toISOString() } : {}),
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [person, website, webPage],
 };
 ---
 
@@ -93,6 +175,7 @@ const personStructuredData = {
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Rodrigo Yokota" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -104,12 +187,13 @@ const personStructuredData = {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@ryok90" />
+    <meta name="twitter:site" content="@ryok90" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />
     <meta name="twitter:image:alt" content="Rodrigo Yokota, Platform Engineer" />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(personStructuredData)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
       if (location.hostname === 'yokota.dev') {
