@@ -51,7 +51,16 @@ const tickerItems = [
 // group wider than any real viewport, so the fixed gap in .ticker__group governs
 // the spacing instead of leftover space being spread between the items.
 const tickerRepeats = 6;
-const tickerRow = Array.from({ length: tickerRepeats }, () => tickerItems).flat();
+
+// Only the first pass carries text. Every later item is an empty span that
+// global.css labels from these custom properties, so the marquee still renders
+// twelve passes while the document states each topic exactly once. The matching
+// rules in global.css are tied to this list's length; see AGENTS.md.
+const tickerVars = tickerItems
+  .map((item, index) => `--ticker-item-${index + 1}: '${item}'`)
+  .join('; ');
+const tickerEcho = (passes: number) =>
+  Array.from({ length: passes * tickerItems.length }, (_, index) => index);
 
 const experience = [
   {
@@ -250,13 +259,19 @@ const projectSchema = [
         </aside>
       </section>
 
-      <div class="ticker" aria-hidden="true" style={`--ticker-repeats: ${tickerRepeats}`}>
+      <div
+        class="ticker"
+        aria-hidden="true"
+        style={`--ticker-repeats: ${tickerRepeats}; ${tickerVars}`}
+      >
         <div class="ticker__track">
-          {[0, 1].map(() => (
-            <div class="ticker__group">
-              {tickerRow.map((item) => <><span>{item}</span><i></i></>)}
-            </div>
-          ))}
+          <div class="ticker__group">
+            {tickerItems.map((item) => <><span>{item}</span><i></i></>)}
+            {tickerEcho(tickerRepeats - 1).map(() => <><span></span><i></i></>)}
+          </div>
+          <div class="ticker__group">
+            {tickerEcho(tickerRepeats).map(() => <><span></span><i></i></>)}
+          </div>
         </div>
       </div>
 

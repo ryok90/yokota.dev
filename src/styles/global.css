@@ -586,6 +586,44 @@ svg {
   transform: translateY(2px);
 }
 
+/* Only the first pass carries text; every later span is empty and takes its
+   label from the custom properties index.astro sets on .ticker, so the crawled
+   document states each topic once instead of twelve times. Each item renders a
+   span plus a diamond, so the spans of one pass sit at odd child positions and
+   repeat every 16 children. That stride and the eight rules below are both tied
+   to tickerItems.length. */
+.ticker__group span:empty:nth-child(16n + 1)::before {
+  content: var(--ticker-item-1);
+}
+
+.ticker__group span:empty:nth-child(16n + 3)::before {
+  content: var(--ticker-item-2);
+}
+
+.ticker__group span:empty:nth-child(16n + 5)::before {
+  content: var(--ticker-item-3);
+}
+
+.ticker__group span:empty:nth-child(16n + 7)::before {
+  content: var(--ticker-item-4);
+}
+
+.ticker__group span:empty:nth-child(16n + 9)::before {
+  content: var(--ticker-item-5);
+}
+
+.ticker__group span:empty:nth-child(16n + 11)::before {
+  content: var(--ticker-item-6);
+}
+
+.ticker__group span:empty:nth-child(16n + 13)::before {
+  content: var(--ticker-item-7);
+}
+
+.ticker__group span:empty:nth-child(16n + 15)::before {
+  content: var(--ticker-item-8);
+}
+
 .ticker__group i {
   width: 0.4rem;
   height: 0.4rem;
