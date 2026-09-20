@@ -1,0 +1,42 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deployment at a time; never cancel one mid-upload.
+concurrency:
+  group: deploy-main
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy to Zephyr
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # `lastModified()` reads `git log -1` per source file for sitemap `lastmod` and
+          # JSON-LD `dateModified`. A shallow clone has no history for files untouched by
+          # HEAD, so the dates would silently disappear.
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # `pnpm build` is `astro build`, and `withZephyr()` uploads and deploys as part of it.
+      - name: Build and deploy
+        env:
+          ZE_SECRET_TOKEN: ${{ secrets.ZE_SECRET_TOKEN }}
+        run: pnpm build
