@@ -1,0 +1,59 @@
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  deployments: write
+
+jobs:
+  preview:
+    name: Preview environment
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # `lastModified()` reads `git log -1` per source file for sitemap `lastmod` and
+          # JSON-LD `dateModified`. A shallow clone has no history for files untouched by
+          # HEAD, so those dates would silently disappear from the preview.
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # `pnpm build` is `astro build`, and `withZephyr()` uploads and deploys as part of it.
+      # It runs on `closed` too: the action reads this job's deploy result out of the local
+      # zephyr-agent state, and without it the teardown run has nothing to resolve and skips
+      # the final comment update.
+      - name: Build and deploy
+        env:
+          ZE_SECRET_TOKEN: ${{ secrets.ZE_SECRET_TOKEN }}
+        run: pnpm build
+
+      # Creates, updates, or tears down the preview environment for this PR and keeps one
+      # comment in sync. Reads `ZE_SECRET_TOKEN` directly to resolve environment and tag URLs.
+      - name: Zephyr preview environments
+        id: preview
+        uses: ZephyrCloudIO/zephyr-preview-environment-action@v1.0.0
+        env:
+          ZE_SECRET_TOKEN: ${{ secrets.ZE_SECRET_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Preview URLs
+        if: steps.preview.outputs.preview_environments_urls
+        run: echo "${{ steps.preview.outputs.preview_environments_urls }}"

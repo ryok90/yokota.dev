@@ -94,6 +94,15 @@ This repository is Rodrigo Yokota's personal portfolio at `https://yokota.dev`. 
 
 `pnpm build` is an external write: `withZephyr()` uploads and deploys the build using the login in `~/.zephyr`. Use it when a Zephyr deployment is intended and retain the resulting preview URL for verification or the PR description.
 
+## Continuous Integration
+
+- `.github/workflows/deploy.yml` runs on every push to `main` and on manual dispatch: install, then `pnpm build`, which is the Zephyr deployment. `concurrency: deploy-main` with `cancel-in-progress: false` serializes deployments so an upload is never killed mid-flight.
+- `.github/workflows/preview.yml` runs on pull requests (`opened`, `synchronize`, `reopened`, `closed`) and hands the build to `ZephyrCloudIO/zephyr-preview-environment-action@v1.0.0`, which keeps one deployment comment on the PR in sync.
+- Both authenticate with the repository secret `ZE_SECRET_TOKEN`. `zephyr-agent` short-circuits its login when that variable is present, and the preview action reads the same variable directly to resolve environment and tag URLs.
+- The build runs on `closed` PRs too. The action resolves deployments from the local `zephyr-agent` state produced in the same job, so a run without a build has nothing to resolve and skips the teardown comment.
+- Both workflows check out with `fetch-depth: 0`. `lastModified()` shells out to `git log -1` per source file, and a shallow clone carries no history for files untouched by `HEAD`, which would silently drop `lastmod` and `dateModified`.
+- `pnpm/action-setup` is pinned only by major; the pnpm version comes from the `packageManager` field in `package.json`. Type checking via `astro build` is sufficient; `pnpm check` is redundant in CI since type errors fail the build anyway.
+
 ## Completion Criteria
 
 1. `pnpm check` reports zero errors, warnings, and hints.
